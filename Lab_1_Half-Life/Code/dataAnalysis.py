@@ -50,17 +50,20 @@ def sanniFunction():
 # sanniFunction()
 
 def analyzeData(filename):
+    def readRaw(filename):
+        data = pd.read_table("Lab_1_Half-Life/Data/Raws/" + filename, delimiter="\t", header=None)
+        return data
     def getBackgroundAverage(filename):
-        data = pd.read_excel("Lab_1_Half-Life/Data/Formatted/" + filename, header=None)
+        data = readRaw(filename)
         x_axis = np.array(data[0])
         y_axis = np.array(data[1])
         avg = np.average(y_axis)
         return avg
     def exp_func(x, a, b, c):
         return a * math.e**(-1 * b * x) + c 
-    data = pd.read_excel("Lab_1_Half-Life/Data/Formatted/" + filename, header=None)
+    data = readRaw(filename)
     x_axis = np.array(data[0])
-    backgroundAverage = getBackgroundAverage("backgroundradiation.xlsx")
+    backgroundAverage = getBackgroundAverage("backgroundradiation")
     y_axis = np.array(data[1]) - backgroundAverage
     params, covariance = curve_fit(exp_func, x_axis, y_axis)
     params = tuple(params)
@@ -80,11 +83,12 @@ def analyzeData(filename):
     halfLifeErr = np.log(2)/np.power(b,2)*berr
     print(f"Half life is {halfLife:.1f} \u00B1 {halfLifeErr:.1f}")
     # plt.show()
-    
-# (analyzeData("day3_liquidtrial1.xlsx"))
-# (analyzeData("day3_liquidtrial2.xlsx"))
-# (analyzeData("day3_liquidtrial3.xlsx"))
-(analyzeData("day3_liquidtrial4.xlsx"))
+(analyzeData("day3_liquidtrial1"))
+(analyzeData("day3_liquidtrial2"))
+(analyzeData("day3_liquidtrial3"))
+(analyzeData("day3_liquidtrial4"))
+(analyzeData("day3_liquidtrial5"))
+(analyzeData("day3_liquidtrial6"))
 
 
     
