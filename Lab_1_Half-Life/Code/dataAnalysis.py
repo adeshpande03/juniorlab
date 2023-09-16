@@ -89,7 +89,7 @@ def analyzeData(filename):
     plt.xlabel("Time")
     plt.ylabel("Gamma Ray Count")
     plt.title("Barium-137 Gamma Ray Counts vs. Time")
-    plt.text(x_axis.max() / 3 * 2, y_axis.max() / 4 * 3,f'y = -{a:.3f} exp(-{b:.3f}*x) + {c:.3f}', horizontalalignment='center',
+    plt.text(x_axis.max() / 3 * 2, y_axis.max() / 4 * 3,f'y = -{a:.2E} exp(-{b:.2E}•x) + {c:.2E}', horizontalalignment='center',
      verticalalignment='center', color='red')
     halfLife = np.log(2) / b
     halfLifeErr = np.log(2) / np.power(b, 2) * berr
