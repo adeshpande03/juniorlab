@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1695057834 "/Users/akhildeshpande/Documents/VSCode/juniorlab/Lab_1_Half-Life/Report/Report.tex" "/Users/akhildeshpande/Documents/VSCode/juniorlab/Lab_1_Half-Life/Report/Report.pdf" "Report" 1695057834
+["pdflatex"] 1695077354 "/Users/akhildeshpande/Documents/VSCode/juniorlab/Lab_1_Half-Life/Report/Report.tex" "/Users/akhildeshpande/Documents/VSCode/juniorlab/Lab_1_Half-Life/Report/Report.pdf" "Report" 1695077355
   "../images/day3_liquidtrial3_plot.png" 1695052070 52718 88f35d3676ec1e18ab4c6824c4600448 ""
-  "/Users/akhildeshpande/Documents/VSCode/juniorlab/Lab_1_Half-Life/Report/Report.aux" 1695057834 1131 f2f282b5c72a94ef606cfd95327b3e5b ""
-  "/Users/akhildeshpande/Documents/VSCode/juniorlab/Lab_1_Half-Life/Report/Report.tex" 1695057834 5258 77b5663391873f50b4c5ac9835aceb1b ""
+  "/Users/akhildeshpande/Documents/VSCode/juniorlab/Lab_1_Half-Life/Report/Report.aux" 1695077355 1131 f2f282b5c72a94ef606cfd95327b3e5b ""
+  "/Users/akhildeshpande/Documents/VSCode/juniorlab/Lab_1_Half-Life/Report/Report.tex" 1695077353 5258 77b5663391873f50b4c5ac9835aceb1b ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -50,11 +50,11 @@
   "/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1616695603 5169178 a2ce6e2d73f603b690db6777d06dbccb ""
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1646843111 2724734 6759486adf2de4a9d8dec44b68f9ba17 ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
-  "Report.aux" 1695057834 1131 f2f282b5c72a94ef606cfd95327b3e5b "pdflatex"
-  "Report.tex" 1695057834 5258 77b5663391873f50b4c5ac9835aceb1b ""
+  "Report.aux" 1695077355 1131 f2f282b5c72a94ef606cfd95327b3e5b "pdflatex"
+  "Report.tex" 1695077353 5258 77b5663391873f50b4c5ac9835aceb1b ""
   (generated)
-  "Report.log"
-  "Report.pdf"
-  "Report.aux"
   "/Users/akhildeshpande/Documents/VSCode/juniorlab/Lab_1_Half-Life/Report/Report.log"
   "/Users/akhildeshpande/Documents/VSCode/juniorlab/Lab_1_Half-Life/Report/Report.pdf"
+  "Report.pdf"
+  "Report.aux"
+  "Report.log"
