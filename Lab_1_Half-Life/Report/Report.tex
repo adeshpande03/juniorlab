@@ -7,27 +7,16 @@
 
 
 %\usepackage{amsmath}
+\usepackage{subcaption}
 %\usepackage{graphics}
 \usepackage{graphicx} %more modern version of graphics
 %\graphicspath{{path-to-folder-containing-necessary-graphics}{other folder as necessary}}
 
 
-%=====================================================
-%============ \begin{document} =======================
-%=====================================================
 
 \begin{document}
 
-%=====================================================
-%============ Title ==================================
-%=====================================================
-
 \title{\Large\bf Measuring the Half Life of Ba-137 Using a Scintillator Detector}
-% \title{\Large\bf Larger, Bolded Title}
-
-%=====================================================
-%============ Author =================================
-%=====================================================
 \author{
  Akhil Deshpande \\*
   \\*
@@ -38,212 +27,79 @@
 }
 \date{September 15, 2023}
 
-% \address{The University of Texas, Austin, Texas, 78712}
+
 
 \maketitle
-
-%=====================================================
-%============ Abstract ===============================
-%=====================================================
-
 \begin{abstract}
-
-In an experiment designed to study very interesting phenomena
-we have observed fascinating events.
-This result confirms our understanding of the underlying physics.
-Few statements summarizing the technique and results.
-
 \end{abstract}
-
-%=====================================================
-%============ Body of the article ====================
-%=====================================================
-
-%=====================================================
-%============ Section ================================
-
 \section{Introduction}
-
 \subsection{Physics Motivation}
-
-Broad physics motivation should be discussed briefly but
-meaningfully. Basic phenomena should be
-explained (or referred to) and
-prediction for experimental results clearly
-stated. Here and throughout the report appropriate
-references should be included~\cite{book, article}.
-
 \subsection{Historical context}
-
-You may want to relate what you are doing to first or previous
-work on this topic. Since you are doing an experimental work,
-the context should be on the experimental technique. For example,
-you may say that this was first done in a such and such way
-but later it was discovered
-that one can also do it another way. Your technique may be
-related to the first or none of the above.
-
-
-%=====================================================
-%============ Section ================================
-
 \section{Theoretical background}
-
-Provide some more theoretical details for your measurements.
-Give formulas and references which provide a specific theoretical
-context for your measurements.
-
-
-%=====================================================
-%============ Section ================================
-
 \section{Experimental setup}
-
-
 \subsection{Apparatus}
-
-Ideas behind the particular technique should be briefly
-discussed. Enclose references. Sketches, pictures, and
-suitable schematics should be included and explained
-concisely. All major components of the system should be
-mentioned and their role clearly motivated. This section
-is not simply a list of components and it is not an
-instruction manual. 
-
-
-%=====================================================
-%============ Importing pictures  ====================
-%=====================================================
-
-\begin{figure}[h]
-  %
-  % placement specifier = { h,t,b,p,!,H }
-  % see the following url for placement specifier definitions:
-  % http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
-  %
- \begin{center}
-%  \includegraphics*[width=3.5in]{string_theory.pdf}
-  %
- \caption{ My Caption, in all its glory.\label{fig:apparatus} }
- % See http://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
- %  for information on labels.
- \end{center}
-\end{figure}
-
 \subsection{Data Collection}
 
-Data taking procedures should be described and various modes of
-data collection explained. Calibration procedures and
-relevant plots and numerical tables should be included.
-State clearly what measurements were taken for the final
-data analysis. Describe `doing the experiment' so it would
-be helpful to other students in the future. This may need
-to include physics arguments {\em what } and {\em how } data should
-be collected.
+We first measured the average background radiation found in our experimental
+area to ensure that we were not incorrectly assuming those measurements to be 
+part of our gamma ray count. Then, we placed the sample of Ba-137 solution into
+our apparatus, and collected the total number of counts every one second. The
+number of counts observed is directly proportional to the mass of Ba-137 remaining
+in the sample. We measured these counts with a DAQ hardware system, combined with
+LabView software
+
+The gamma ray counts should follow an exponential decay, as modeled by $N(t) = N_0e^{-\lambda t} + c$.
+Here, $N(t)$ represents the number of gamma rays, $N_0$ is the total number of gamma rays at the
+initial time, $\lambda$ is the decay constant, and c is the background radiation for that trial.
+
+
 
 
 \subsection{Data Analysis}
 
-This is the most important section of the report.
-Describe data analysis. Details! Perhaps include a figure and refer
-the reader to it! See Figure~\ref{fig:apparatus}. Maybe you will need
-to include a table. See Table~\ref{tab:events}.
+The data collected was mainly characterized by the count rate of Barium-137 
+decay as detected by the photomultiplier tube over regular intervals of time. 
+This dataset forms the primary source for determining the half-life of 
+Barium-137, through an application of computational tools such as matplotlib
+and scipy.
 
-Describe calculations of the final results.
-Thoroughly address error analysis and discussion of measurement
-uncertainties. Remember: NO EXPERIMENTAL RESULT CAN BE QUOTED
-WITHOUT AN ERROR BAR! Do not forget about random or systematic
-uncertainties. Be sure to propagate errors correctly!
-Include a demonstrative graph when possible.
-%See Figure~\ref{fig:results}.
+For each trial we did, the gamma ray counts were fit to the exponential function 
+$N(t) = N_0e^{-\lambda t} + c$, as described above.
 
+Our average result for our half life, as well as our error was $163.1 \pm 8.5$ seconds.
+Below is a plot of our frist trial, labeled with its equation of decay. In order to 
+transform the decay constant into a half life (in seconds), we apply the following formula:
+$$
+t_{\frac{1}{2}} = \frac{\log(2)}{\lambda}
+$$
 
-Make final assessment and interpretation after that.
-Discuss apparatus problems if any. Suggestions for
-lab setup or approach improvements are welcome!
+Our experiment was subject to random errors. Namely, the background radiation was not
+a consistent number. Furthermore, our gamma ray counts were part of a Poisson Process.
+We frequently experienced high peaks or dips over an interval. To mitigate this error,
+we increased the counting interval from one-tenth of a second to one second. This helped
+average the error and tighten the spread of the randomness we experienced.
 
-%=====================================================
-%============ Importing pictures  ====================
-%=====================================================
-
-\begin{figure}[h]
-  %
-  % placement specifier = { h,t,b,p,!,H }
-  % see the following url for placement specifier definitions:
-  % http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
-  %
- \begin{center}
-%  \includegraphics*[width=3.5in]{centrifugal_force.pdf}
-  %
-  %
- %\caption{ The experiment provided interesting results.\label{fig:results} }
- % See http://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
- %  for information on labels.
- \end{center}
+Overall, the data for our experiment shows that we were able to determine the 
+half life of a sample of Ba-137. As seen in the figure below, when we plot our
+data with respect to our modeled equation, we obtain an acceptable result after
+the decay constant is converted into a half life measured in seconds. 
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=.9\textwidth]{../images/day3_liquidtrial3_plot.png}
 \end{figure}
 
-
-%===========================================================================
-%=========================== Table 1 =======================================
-%===========================================================================
-%
-% Note: the position of the table does not always depend on its position here. See
-% http://en.wikibooks.org/wiki/LaTeX/Tables
-% for details.
-%
-
-\begin {table}[h]
-{
-{%\footnotesize
-\begin {center}
-\begin {tabular} {c | c c  c | c | c c }
-\hline\hline
-Run 			&   ~~POT~~ 		&
-\multicolumn{2}{ | c } {Predicted}  &   \multicolumn{2}  {| c} {Selected} \\
-Period		& $(10^{20})$	&
-\multicolumn{2}{ | c } {(No oscillations)}  &   \multicolumn{2}  {| c} {(Far Detector)} \\
-			    &
-			& \multicolumn{1} {| c } {~~~Fully} & \multicolumn{1} { c } {~~~Partially}
-			& \multicolumn{1} {| c } {~~~Fully} & \multicolumn{1} { c } {~~~Partially} \\
-			
-\hline
-I			& 1.269		
-			& \multicolumn{1} {| r } {426 } & \multicolumn{1} { r } {375 }
-		     	& \multicolumn{1} {| r } {318 } & \multicolumn{1} { r } {357 } \\
-
-II		     	& 1.943
-			& \multicolumn{1} {| r } {639 } & \multicolumn{1} { r } {565 }
-		    	& \multicolumn{1} {| r } {511 } & \multicolumn{1} { r } {555 } \\
-
-\hline
-Total			& 7.246
-			& \multicolumn{1} {| r } {2,451 } & \multicolumn{1} { r } {2,206 }
-		     	& \multicolumn{1} {| r } {1,986 } & \multicolumn{1} { r } {2,017 } \\
-
-\hline% \hline
-\end {tabular}
-\end {center}
-}
-}
-\caption {\label{tab:events}
-Predicted and observed numbers of events classified in the Far Detector as fully and
-partially reconstructed charged current interactions shown for all running periods.
- }
-\end {table}
+\newpage
 
 
-%=====================================================
-%============ Section ================================
-%=====================================================
+
+
 
 \section{Results}
 
-Clearly present the result of your analysis. Make sure
-you include the uncertainties. No experimental result
-can be quoted without an error attached to it.
-
-Your results should be compared with predictions and other
-measurements.
+The average half life we measured was $163.1 \pm 8.5$ seconds. This result 
+is not totally consistent with the accepted result, but we are within one 
+standard deviation of such result. As all of our trials also fell within this
+range, we can state that we have observed the half life of Ba-137 correctly.
 
 
 %=====================================================
@@ -251,10 +107,13 @@ measurements.
 
 \section{Summary and conlcusions}
 
-Summarize briefly the results of the experiment.
-Acknowledge (i.e., thank for) contributions or help
-of your partner(s) and or
-others (TA, machine shop, software used, ...).
+In this experiment, we observed the average half lifes of samples of Ba-137 to be 
+$163.1 \pm 8.5$ seconds. This result is very close to the accepted result.
+
+I would like to thank my lab partner, Sannidhya Desai for his assistance on data
+collection and overall assistance. Furthermore, I'd like to thank Dr. Dan Heinzen,
+Parth Dave, and Konner Feldman for their assistance throughout the measurement and 
+set up processes.
 
 %=====================================================
 %============ Bibliography  ==========================
