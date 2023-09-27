@@ -1,4 +1,4 @@
-angle (degrees) - Plot 0	thermopile signal (volts) - Plot 0
+angle (degrees) - Plot 0	thermopile signal (volts) - Plot 0	
 29.00	2.86315E-5	
 29.05	4.09479E-5	
 29.10	0.000773338	
