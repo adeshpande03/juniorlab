@@ -21,7 +21,21 @@ def analyzeData(filename):
     data = readRaw(filename)
     x_axis = np.array(data["angle (degrees) - Plot 0"])
     y_axis = np.array(data["thermopile signal (volts) - Plot 0"])
-    plt.ylim(0, .009)
+
+    if "600C" in filename:
+        mask = y_axis <= 0.001
+
+        # Filter both x and y using the mask
+        x_axis = x_axis[mask]
+        y_axis = y_axis[mask]
+
+    else:
+        mask = y_axis <= 0.01
+
+        # Filter both x and y using the mask
+        x_axis = x_axis[mask]
+        y_axis = y_axis[mask]
+    plt.ylim(0, 0.009)
     # params, covariance = curve_fit(exp_func, x_axis, y_axis)
     # params = tuple(params)
     # a, b, c = params
@@ -30,6 +44,7 @@ def analyzeData(filename):
     # print(f'bg = {backgroundAverage}')
     # print(f"The equation of the line is: y = -{a:.2f} exp(-{b:.5f}*x) + {c}")
     # print(f"The decay constant is {b:.5f} \u00B1 {berr:.5f}")
+
     plt.scatter(x_axis, y_axis, label=filename[3:-4])
     # plt.plot(x_axis, exp_func(x_axis, *params), label="Logarithmic Fit", color="red")
     plt.legend()
@@ -48,7 +63,6 @@ def analyzeData(filename):
 
 
 if __name__ == "__main__":
-
     for temp in [600, 650, 700, 800, 900, 1000, 1100]:
         if temp == 700:
             (analyzeData(f"d4_{temp}C.txt"))
