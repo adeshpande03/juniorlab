@@ -9,19 +9,19 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
+
 def analyzeData(filename):
     def readRaw(filename):
-        data = pd.read_table(
-            "Lab_2_BB-Radiation/Raws/" + filename, delimiter="\t", header=None
-        )
+        data = pd.read_table("Lab_2_BB-Radiation/Raws/" + filename, delimiter="\t")
         return data
-    
+
     # def exp_func(x, a, b, c):
     #     return a * math.e ** (-1 * b * x) + c
 
     data = readRaw(filename)
-    x_axis = np.array(data[0])
-    y_axis = np.array(data[1])
+    x_axis = np.array(data["angle (degrees) - Plot 0"])
+    y_axis = np.array(data["thermopile signal (volts) - Plot 0"])
+    # plt.ylim(0, .01)
     # params, covariance = curve_fit(exp_func, x_axis, y_axis)
     # params = tuple(params)
     # a, b, c = params
@@ -48,4 +48,6 @@ def analyzeData(filename):
 
 
 if __name__ == "__main__":
-    (analyzeData("d3_1100C.txt"))
+    analyzeData("d3_600C.txt")
+    # for temp in [600, 650, 700, 800, 900, 1000, 1100]:
+    #     (analyzeData(f"d3_{temp}C.txt"))
