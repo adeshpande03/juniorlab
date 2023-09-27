@@ -15,8 +15,8 @@ def analyzeData(filename):
         data = pd.read_table("Lab_2_BB-Radiation/Raws/" + filename, delimiter="\t")
         return data
 
-    # def exp_func(x, a, b, c):
-    #     return a * math.e ** (-1 * b * x) + c
+    def refractiveIndex(wv):
+        n = np.sqrt(1.33973 + 0.81070*wv**2/(wv**2 - 0.10065**2) + 0.19652 *wv**2/(wv**2 - 29.87**2) + 4.52469 * wv**2/(wv**2 - 53.82**2))
 
     data = readRaw(filename)
     x_axis = np.array(data["angle (degrees) - Plot 0"])
@@ -36,30 +36,13 @@ def analyzeData(filename):
         x_axis = x_axis[mask]
         y_axis = y_axis[mask]
     plt.ylim(0, 0.009)
-    # params, covariance = curve_fit(exp_func, x_axis, y_axis)
-    # params = tuple(params)
-    # a, b, c = params
-    # perr = np.sqrt(np.diag(covariance))
-    # berr = perr[1]
-    # print(f'bg = {backgroundAverage}')
-    # print(f"The equation of the line is: y = -{a:.2f} exp(-{b:.5f}*x) + {c}")
-    # print(f"The decay constant is {b:.5f} \u00B1 {berr:.5f}")
-
     plt.scatter(x_axis, y_axis, label=filename[3:-4])
-    # plt.plot(x_axis, exp_func(x_axis, *params), label="Logarithmic Fit", color="red")
     plt.legend()
     plt.xlabel("Angle")
     plt.ylabel("Intensity")
     plt.title("Intensity vs. Angle")
-    # plt.text(x_axis.max() / 3 * 2, y_axis.max() / 4 * 3,f'y = -{a:.2E} exp(-{b:.2E}•x) + {c:.2E}', horizontalalignment='center',
-    #  verticalalignment='center', color='red')
-    # plt.show()
-    # halfLife = np.log(2) / b
-    # halfLifeErr = np.log(2) / np.power(b, 2) * berr
-    # print(f"Half life is {halfLife:.1f} \u00B1 {halfLifeErr:.1f}")
     plt.savefig(f"Lab_2_BB-Radiation/Images/{filename}_plot.png")
     plt.clf()
-    # return {"halfLife": halfLife, "error": halfLifeErr}
 
 
 if __name__ == "__main__":
