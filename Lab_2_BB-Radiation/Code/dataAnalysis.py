@@ -28,7 +28,6 @@ def refractiveIndex(wv):
 def angularDeflection(wv):
     n = refractiveIndex(wv)
     phi = np.deg2rad(47.447)
-    pi = np.pi
     alpha = np.deg2rad(60)
     d = phi + np.arcsin(n * np.sin(alpha - np.arcsin(np.sin(phi) / n))) - alpha
     d = np.rad2deg(d)
