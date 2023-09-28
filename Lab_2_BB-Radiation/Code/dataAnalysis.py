@@ -26,7 +26,6 @@ def refractiveIndex(wv):
 def angularDeflection(wv):
     n = refractiveIndex(wv)
     phi = np.deg2rad(47.447)
-    pi = np.pi
     alpha = np.deg2rad(60)
     d = phi + np.arcsin(n * np.sin(alpha - np.arcsin(np.sin(phi) / n))) - alpha
     d = np.rad2deg(d)
@@ -70,10 +69,11 @@ def analyzeData(filename):
 
 
 if __name__ == "__main__":
-    # for temp in [600, 650, 700, 800, 900, 1000, 1100]:
-    #     if temp == 700:
-    #         (analyzeData(f"d4_{temp}C.txt"))
-    #         continue
-    #     (analyzeData(f"d3_{temp}C.txt"))
-    # print(angularDeflection(635e-9))
-    analyzeData(f"d3_600C.txt")
+    for temp in [600, 650, 700, 800, 900, 1000, 1100]:
+        if temp == 700:
+            (analyzeData(f"d4_{temp}C.txt"))
+            continue
+        (analyzeData(f"d3_{temp}C.txt"))
+
+    print(angularDeflection(635e-9))
+    # analyzeData(f"d3_600C.txt")
