@@ -43,15 +43,11 @@ def analyzeData(filename):
 
     if "600C" in filename:
         mask = y_axis <= 0.001
-
-        # Filter both x and y using the mask
         x_axis = x_axis[mask]
         y_axis = y_axis[mask]
 
     else:
         mask = y_axis <= 0.01
-
-        # Filter both x and y using the mask
         x_axis = x_axis[mask]
         y_axis = y_axis[mask]
     plt.ylim(0, 0.009)
@@ -69,11 +65,11 @@ def analyzeData(filename):
 
 
 if __name__ == "__main__":
-    for temp in [600, 650, 700, 800, 900, 1000, 1100]:
-        if temp == 700:
-            (analyzeData(f"d4_{temp}C.txt"))
-            continue
-        (analyzeData(f"d3_{temp}C.txt"))
+    # for temp in [600, 650, 700, 800, 900, 1000, 1100]:
+    #     if temp == 700:
+    #         (analyzeData(f"d4_{temp}C.txt"))
+    #         continue
+    #     (analyzeData(f"d3_{temp}C.txt"))
 
     print(angularDeflection(635e-9))
     # analyzeData(f"d3_600C.txt")
