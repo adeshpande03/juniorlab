@@ -1,16 +1,3 @@
-%=====================================================
-%====== If you are new to LaTeX, this website ========
-%======     will be your new best friend:     ========
-%======   http://en.wikibooks.org/wiki/LaTeX  ========
-%======   Template created by Jonathan Blair  ========
-%=====================================================
-
-
-
-%=====================================================
-%============ Controls ===============================
-%=====================================================
-
 %\documentclass[12pt,letterpaper,onecolumn]{article}
 %\documentclass[11pt,letterpaper,onecolumn]{article}
 \documentclass[10pt,letterpaper,onecolumn]{article}
@@ -19,86 +6,149 @@
 %\documentclass[10pt,letterpaper,twocolumn]{article}
 
 
-%\usepackage{amsmath}
+\usepackage{amsmath}
 %\usepackage{graphics}
-\usepackage{graphicx} %more modern version of graphics
+\usepackage{graphicx} 
 %\graphicspath{{path-to-folder-containing-necessary-graphics}{other folder as necessary}}
 
 
-%=====================================================
-%============ \begin{document} =======================
-%=====================================================
-
 \begin{document}
 
-%=====================================================
-%============ Title ==================================
-%=====================================================
 
-\title{Observation of Very Interesting Phenomena}
+\title{Verification of Planck's Law Through the Observation of Blackbody Spectra}
 %\title{\Large\bf Larger, Bolded Title}
 
-%=====================================================
-%============ Author =================================
-%=====================================================
 \author{
- A. Good Student \\*
+ Akhil Deshpande \\*
   \\*
  PHY 353L Modern Laboratory \\*
  Department of Physics \\*
  The University of Texas at Austin \\*
  Austin, TX 78712, USA
 }
-\date{February 30, 2011}
+\date{September 28, 2023}
 
-%\address{The University of Texas, Austin, Texas, 78712}
 
 \maketitle
 
-%=====================================================
-%============ Abstract ===============================
-%=====================================================
+
 
 \begin{abstract}
 
-In an experiment designed to study very interesting phenomena
-we have observed fascinating events.
-This result confirms our understanding of the underlying physics.
-Few statements summarizing the technique and results.
+% In an experiment designed to study very interesting phenomena
+% we have observed fascinating events.
+% This result confirms our understanding of the underlying physics.
+% Few statements summarizing the technique and results.
 
 \end{abstract}
 
-%=====================================================
-%============ Body of the article ====================
-%=====================================================
-
-%=====================================================
-%============ Section ================================
 
 \section{Introduction}
 
 \subsection{Physics Motivation}
 
-Broad physics motivation should be discussed briefly but
-meaningfully. Basic phenomena should be
-explained (or referred to) and
-prediction for experimental results clearly
-stated. Here and throughout the report appropriate
-references should be included~\cite{book, article}.
+Blackbody radiation, a foundational concept in modern physics, emerged 
+from the study of the spectrum of radiation emitted by objects as a 
+function of temperature. Blackbody radiation refers to the electromagnetic 
+radiation emitted by a perfect absorber - an object that absorbs all 
+incident radiation - when it is in thermal equilibrium with its surroundings. 
+The study of this radiation provides profound insights into the underlying 
+principles of quantum mechanics and solidifies our understanding of the 
+quantization of energy.
+
+At the end of the 19th century, physicists relied heavily on classical 
+physics to describe the behavior of physical systems. But the classical 
+description of radiation emitted by a blackbody, based on Rayleigh-Jeans 
+law, predicted that the energy radiated at short wavelengths 
+(like ultraviolet) would become infinite, a problem famously known as the 
+``ultraviolet catastrophe.'' Mathematically, this can be expressed by the 
+Rayleigh-Jeans law:
+\begin{equation}
+I(\nu) = \frac{8 \pi \nu^2 k_B T}{c^3}
+\end{equation}
+where \( I(\nu) \) is the intensity of radiation 
+at frequency \( \nu \), \( k_B \) is the Boltzmann 
+constant, \( T \) is the temperature of the blackbody, and \( c \) 
+is the speed of light. As \( \nu \) approaches infinity, 
+so does \( I(\nu) \), leading to the aforementioned catastrophe.
+
+It was Max Planck who, in a move of both brilliance and desperation, 
+postulated that energy levels of oscillators in a blackbody were quantized, 
+i.e., they could only take on certain discrete values. This was the birth 
+of the quantization of energy, a concept alien to classical physics. 
+Planck derived a new law of blackbody radiation which not only agreed 
+with experimental results but also eliminated the ultraviolet catastrophe. 
+Planck's law is given by:
+
+\begin{equation}
+I(\nu) = \frac{8 \pi h \nu^3}{c^3} \frac{1}{e^{\frac{h \nu}{k_B T}} - 1}
+\end{equation}
+
+where \( h \) is Planck's constant \cite{planck1901}.
+Planck's groundbreaking proposition led to the development of 
+quantum mechanics. Five years later, in 1905, Einstein took Planck's 
+idea of quantization of energy and applied it to the photoelectric effect, 
+proposing that light itself could be considered as quantized in packets of 
+energy, or photons. This work on the photoelectric effect, which further 
+solidified the quantization principle proposed by Planck, earned Einstein 
+the Nobel Prize in Physics in 1921 \cite{einstein1905}.
+
+In essence, the study of blackbody radiation was instrumental in revealing the limitations of classical physics. It necessitated the development of a new theoretical framework — quantum mechanics. Without understanding blackbody radiation, the development of quantum mechanics, and hence our modern understanding of atomic and molecular phenomena, would be incomplete.
+
 
 \subsection{Historical context}
 
-You may want to relate what you are doing to first or previous
-work on this topic. Since you are doing an experimental work,
-the context should be on the experimental technique. For example,
-you may say that this was first done in a such and such way
-but later it was discovered
-that one can also do it another way. Your technique may be
-related to the first or none of the above.
+The study of blackbody radiation is a journey that transcends 
+more than a century, marked by both empirical observations and 
+the theoretical underpinnings of quantum mechanics. Historically, 
+the radiation emitted from a perfect blackbody, a body that absorbs 
+and emits all radiation incident on it, was of considerable interest 
+to physicists.
 
+In the late 19th century, experimentalists first set out to chart the 
+spectral intensity of blackbody radiation as a function of temperature. 
+Traditional techniques deployed to measure the spectrum involved rudimentary 
+devices like bolometers, which could gauge radiation by the changes in 
+resistance of a fine wire. Lord Rayleigh and James Jeans famously predicted 
+the intensity of such radiation at different wavelengths using classical 
+physics, leading to the ultraviolet catastrophe. Their predictions 
+significantly diverged from experimental data at shorter wavelengths.
 
-%=====================================================
-%============ Section ================================
+The mismatch between the classical predictions and experimental results was 
+the backdrop for Max Planck's revolutionary proposition in 1900. Planck 
+introduced the idea of quantized oscillators to explain the radiation curves, 
+resulting in the Planck radiation formula, which aligned perfectly with 
+experimental observations. This marked the birth of quantum mechanics, a 
+realm where energy levels of oscillators are quantized.
+
+As technology evolved, so did experimental techniques. One critical 
+advancement was the realization that materials like metals could approximate 
+a blackbody radiator if heated. This led to experiments wherein enclosed 
+cavities in solid bodies were studied. Yet, as our apparatus description 
+suggests, measuring the complete spectrum posed challenges both at lower 
+and higher temperatures. While the lower temperature spectrum had minute 
+radiance making it difficult to detect, ideal blackbody sources at higher 
+temperatures were intricate to realize.
+
+The inception of spectrometers brought about a paradigm shift in this realm. 
+However, most early spectrometers, much like the grating spectrometers, 
+were limited in their spectral range and calibration intricacies. 
+It was not until the design of the prism spectrometer, reminiscent of our 
+broadband prism spectrometer, that measurements became more precise. These 
+spectrometers drew inspiration from the principle that different wavelengths 
+of light refract at different angles through a prism, allowing for the 
+isolation and measurement of specific wavelengths.
+
+Our apparatus seems to be an ode to the early efforts in blackbody 
+radiation measurement. The design, though sophisticated, mirrors the 
+principles of the spectrometers first used for this purpose. The broadband 
+prism spectrometer's use of off-axis parabolic mirrors, a barium fluoride 
+prism, and a thermopile detector echo the legacy of pioneering physicists, 
+encapsulating a rich tapestry of both triumphs and tribulations. The rotating 
+detector platform, an innovative touch, allows for the spectral range to be 
+analyzed seamlessly, reminiscent of the pioneering spirit that has always 
+characterized the realm of blackbody radiation experiments.
+
 
 \section{Theoretical background}
 
@@ -107,12 +157,47 @@ Give formulas and references which provide a specific theoretical
 context for your measurements.
 
 
-%=====================================================
-%============ Section ================================
+
+
+The quest to understand the radiation emitted by a perfect blackbody has its roots deeply embedded in both classical and quantum physics. As we embark on this experiment, it's crucial to provide a theoretical grounding.
+
+The Planck Radiation Formula is the cornerstone of blackbody radiation theory. Originally postulated by Max Planck in 1900, this formula describes the spectral density of electromagnetic radiation emitted by a blackbody in thermal equilibrium. It is given by:
+
+\[ I(\nu, T) = \frac{8\pi h\nu^3}{c^3} \frac{1}{e^{\frac{h\nu}{kT}} - 1} \]
+
+Where:
+\begin{itemize}
+  \item \(I(\nu, T)\) is the energy per unit volume per unit frequency interval.
+  \item \(h\) is Planck's constant \(\approx 6.626 \times 10^{-34} \, \text{J s}\).
+  \item \(\nu\) is the frequency of the emitted radiation.
+  \item \(c\) is the speed of light in vacuum.
+  \item \(k\) is Boltzmann's constant \(\approx 1.381 \times 10^{-23} \, \text{J/K}\).
+  \item \(T\) is the absolute temperature of the blackbody\cite{planck_1900}.
+\end{itemize}
+
+Another vital theoretical concept is Wien's Displacement Law. It states that the frequency (\(\nu_{\text{max}}\)) or wavelength (\(\lambda_{\text{max}}\)) at which the emission of a blackbody spectrum is maximized is inversely proportional to the temperature of the blackbody. Mathematically, it is expressed as:
+
+\[ \lambda_{\text{max}} = \frac{c}{\nu_{\text{max}}} = \frac{b}{T} \]
+
+Where \(b\) is Wien's displacement constant, approximately \(2.898 \times 10^{-3} \, \text{m K}\)\cite{wien_law}.
+
+Lastly, the Stefan-Boltzmann Law provides a relation between the total emitted energy of a blackbody and its temperature. Given by:
+
+\[ E = \sigma T^4 \]
+
+Where:
+\begin{itemize}
+  \item \(E\) is the total emitted energy.
+  \item \(T\) is the absolute temperature.
+  \item \(\sigma\) is the Stefan-Boltzmann constant, \(5.67 \times 10^{-8} \, \text{W m}^{-2} \text{K}^{-4}\)\cite{stefan_boltzmann}.
+\end{itemize}
+
+As we conduct our measurements, it is these principles and equations that we rely upon to draw conclusions and inferences about the behavior of blackbody radiation. By understanding the theoretical underpinning of our experiment, we can provide a solid context to the observed results.
+
+
+As we conduct our measurements, it is these principles and equations that we rely upon to draw conclusions and inferences about the behavior of blackbody radiation. By understanding the theoretical underpinning of our experiment, we can provide a solid context to the observed results.
 
 \section{Experimental setup}
-
-
 \subsection{Apparatus}
 
 Ideas behind the particular technique should be briefly
@@ -124,18 +209,15 @@ is not simply a list of components and it is not an
 instruction manual. 
 
 
-%=====================================================
-%============ Importing pictures  ====================
-%=====================================================
 
-\begin{figure}[h]
+\begin{figure}[ht]
   %
   % placement specifier = { h,t,b,p,!,H }
   % see the following url for placement specifier definitions:
   % http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
   %
  \begin{center}
- \includegraphics*[width=3.5in]{string_theory.pdf}
+%  \includegraphics*[width=3.5in]{string_theory.pdf}
   %
  \caption{ My Caption, in all its glory.\label{fig:apparatus} }
  % See http://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
@@ -157,10 +239,10 @@ be collected.
 
 \subsection{Data Analysis}
 
-This is the most important section of the report.
-Describe data analysis. Details! Perhaps include a figure and refer
-the reader to it! See Figure~\ref{fig:apparatus}. Maybe you will need
-to include a table. See Table~\ref{tab:events}.
+% This is the most important section of the report.
+% Describe data analysis. Details! Perhaps include a figure and refer
+% the reader to it! See Figure~\ref{fig:apparatus}. Maybe you will need
+% to include a table. See Table~\ref{tab:events}.
 
 Describe calculations of the final results.
 Thoroughly address error analysis and discussion of measurement
@@ -175,18 +257,16 @@ Make final assessment and interpretation after that.
 Discuss apparatus problems if any. Suggestions for
 lab setup or approach improvements are welcome!
 
-%=====================================================
-%============ Importing pictures  ====================
-%=====================================================
 
-\begin{figure}[h]
+
+\begin{figure}[ht]
   %
   % placement specifier = { h,t,b,p,!,H }
   % see the following url for placement specifier definitions:
   % http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
   %
  \begin{center}
- \includegraphics*[width=3.5in]{centrifugal_force.pdf}
+%  \includegraphics*[width=3.5in]{centrifugal_force.pdf}
   %
   %
  %\caption{ The experiment provided interesting results.\label{fig:results} }
@@ -196,16 +276,13 @@ lab setup or approach improvements are welcome!
 \end{figure}
 
 
-%===========================================================================
-%=========================== Table 1 =======================================
-%===========================================================================
 %
 % Note: the position of the table does not always depend on its position here. See
 % http://en.wikibooks.org/wiki/LaTeX/Tables
 % for details.
 %
 
-\begin {table}[h]
+\begin {table}[ht]
 {
 {%\footnotesize
 \begin {center}
@@ -245,10 +322,6 @@ partially reconstructed charged current interactions shown for all running perio
 \end {table}
 
 
-%=====================================================
-%============ Section ================================
-%=====================================================
-
 \section{Results}
 
 Clearly present the result of your analysis. Make sure
@@ -259,8 +332,6 @@ Your results should be compared with predictions and other
 measurements.
 
 
-%=====================================================
-%============ Section ================================
 
 \section{Summary and conlcusions}
 
@@ -269,25 +340,35 @@ Acknowledge (i.e., thank for) contributions or help
 of your partner(s) and or
 others (TA, machine shop, software used, ...).
 
-%=====================================================
-%============ Bibliography  ==========================
-%=====================================================
 
 \begin{thebibliography}{9}
 
-\bibitem{book} R. Feynman, {\it QED}, Ch.7.
+\bibitem{planck1901}
+Planck, M. (1901). ``On the Law of Distribution of Energy in the Normal Spectrum''. \textit{Annalen der Physik}. 309 (3): 553-563.
+  
+\bibitem{rayleigh1900}
+  Rayleigh, Lord (1900). ``Remarks upon the Law of Complete Radiation''. \textit{Philosophical Magazine}. 49 (302): 539-540.
+  
+\bibitem{einstein1905}
+  Einstein, A. (1905). ``On a Heuristic Viewpoint Concerning the Production and Transformation of Light''. \textit{Annalen der Physik}. 17: 132-148.
+  \bibitem{planck_1900}
+Max Planck.
+\newblock On the theory of the energy distribution law of the normal spectrum.
+\newblock \emph{Verhandlungen der Deutschen Physikalischen Gesellschaft}, 2:237–245, 1900.
 
-\bibitem{article}	
-R.Dalitz, Proc. Roy. Soc. (London) {\bf A64}, 667 (1951)
+\bibitem{wien_law}
+Wilhelm Wien.
+\newblock Über die Energieverteilung im Emissionsspektrum eines schwarzen Körpers.
+\newblock \emph{Annalen der Physik}, 1896.
+
+\bibitem{stefan_boltzmann}
+Ludwig Boltzmann.
+\newblock On the relationship between the second fundamental theorem of the mechanical theory of heat and probability calculations regarding the conditions for thermal equilibrium.
+\newblock \emph{Sitzungsberichte der Kaiserlichen Akademie der Wissenschaften. Mathematisch-Naturwissenschaftliche Classe. Abt. II}, 76:373–435, 1877.
+
 
 \end{thebibliography}
 
-%=====================================================
-%============ End ====================================
-%=====================================================
 
 \end{document}
 
-%=====================================================
-%============ End ====================================
-%=====================================================

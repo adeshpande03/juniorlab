@@ -21,7 +21,9 @@ def refractiveIndex(wv):
         + 0.19652 * wvSquared / (wvSquared - 29.87**2)
         + 4.52469 * wvSquared / (wvSquared - 53.82**2)
     )
-    return n
+    return n #n is a number
+
+c = refractiveIndex(56) * 5
 
 
 def angularDeflection(wv):
@@ -59,6 +61,7 @@ def analyzeData(filename):
 
     elif "700C" in filename:
         mask = (y_axis <= 0.005) & (y_axis >= -0.001)
+
 
         # Filter both x and y using the mask
         x_axis = x_axis[mask]
@@ -137,6 +140,7 @@ if __name__ == "__main__":
     integrals = []
     for temp in temps:
         if temp == 700:
+
             output = analyzeData(f"d4_{temp}C.txt")
         else:
             output = analyzeData(f"d3_{temp}C.txt")
@@ -190,3 +194,9 @@ if __name__ == "__main__":
     # ss_tot = np.sum((integrals-np.mean(integrals))**2)
     # r_squared = 1- ss_res/ss_tot
     # print(r_squared)
+            (analyzeData(f"d4_{temp}C.txt"))
+            continue
+        (analyzeData(f"d3_{temp}C.txt"))
+
+    print(angularDeflection(635e-9))
+    # analyzeData(f"d3_600C.txt")
