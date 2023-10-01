@@ -22,7 +22,9 @@ def refractiveIndex(wv):
         + 0.19652 * wvSquared / (wvSquared - 29.87**2)
         + 4.52469 * wvSquared / (wvSquared - 53.82**2)
     )
-    return n
+    return n #n is a number
+
+c = refractiveIndex(56) * 5
 
 
 def angularDeflection(wv):
