@@ -93,7 +93,10 @@ energy, or photons. This work on the photoelectric effect, which further
 solidified the quantization principle proposed by Planck, earned Einstein 
 the Nobel Prize in Physics in 1921 \cite{einstein1905}.
 
-In essence, the study of blackbody radiation was instrumental in revealing the limitations of classical physics. It necessitated the development of a new theoretical framework — quantum mechanics. Without understanding blackbody radiation, the development of quantum mechanics, and hence our modern understanding of atomic and molecular phenomena, would be incomplete.
+In essence, the study of blackbody radiation was instrumental in revealing the limitations of classical physics.
+It necessitated the development of a new theoretical framework — quantum mechanics. Without understanding blackbody 
+radiation, the development of quantum mechanics, and hence our modern understanding of atomic and molecular phenomena,
+ would be incomplete.
 
 
 \subsection{Historical context}
@@ -152,16 +155,13 @@ characterized the realm of blackbody radiation experiments.
 
 \section{Theoretical background}
 
-Provide some more theoretical details for your measurements.
-Give formulas and references which provide a specific theoretical
-context for your measurements.
 
+The quest to understand the radiation emitted by a perfect blackbody has its roots deeply embedded in both 
+classical and quantum physics. As we embark on this experiment, it's crucial to provide a theoretical grounding.
 
-
-
-The quest to understand the radiation emitted by a perfect blackbody has its roots deeply embedded in both classical and quantum physics. As we embark on this experiment, it's crucial to provide a theoretical grounding.
-
-The Planck Radiation Formula is the cornerstone of blackbody radiation theory. Originally postulated by Max Planck in 1900, this formula describes the spectral density of electromagnetic radiation emitted by a blackbody in thermal equilibrium. It is given by:
+The Planck Radiation Formula is the cornerstone of blackbody radiation theory. 
+Originally postulated by Max Planck in 1900, this formula describes the spectral density of electromagnetic 
+radiation emitted by a blackbody in thermal equilibrium. It is given by:
 
 \[ I(\nu, T) = \frac{8\pi h\nu^3}{c^3} \frac{1}{e^{\frac{h\nu}{kT}} - 1} \]
 
@@ -175,13 +175,17 @@ Where:
   \item \(T\) is the absolute temperature of the blackbody\cite{planck_1900}.
 \end{itemize}
 
-Another vital theoretical concept is Wien's Displacement Law. It states that the frequency (\(\nu_{\text{max}}\)) or wavelength (\(\lambda_{\text{max}}\)) at which the emission of a blackbody spectrum is maximized is inversely proportional to the temperature of the blackbody. Mathematically, it is expressed as:
+Another vital theoretical concept is Wien's Displacement Law. 
+It states that the frequency (\(\nu_{\text{max}}\)) or wavelength (\(\lambda_{\text{max}}\)) at 
+which the emission of a blackbody spectrum is maximized is inversely proportional to the temperature of 
+the blackbody. Mathematically, it is expressed as:
 
 \[ \lambda_{\text{max}} = \frac{c}{\nu_{\text{max}}} = \frac{b}{T} \]
 
 Where \(b\) is Wien's displacement constant, approximately \(2.898 \times 10^{-3} \, \text{m K}\)\cite{wien_law}.
 
-Lastly, the Stefan-Boltzmann Law provides a relation between the total emitted energy of a blackbody and its temperature. Given by:
+Lastly, the Stefan-Boltzmann Law provides a relation between the total 
+emitted energy of a blackbody and its temperature. Given by:
 
 \[ E = \sigma T^4 \]
 
@@ -192,153 +196,236 @@ Where:
   \item \(\sigma\) is the Stefan-Boltzmann constant, \(5.67 \times 10^{-8} \, \text{W m}^{-2} \text{K}^{-4}\)\cite{stefan_boltzmann}.
 \end{itemize}
 
-As we conduct our measurements, it is these principles and equations that we rely upon to draw conclusions and inferences about the behavior of blackbody radiation. By understanding the theoretical underpinning of our experiment, we can provide a solid context to the observed results.
-
-
-As we conduct our measurements, it is these principles and equations that we rely upon to draw conclusions and inferences about the behavior of blackbody radiation. By understanding the theoretical underpinning of our experiment, we can provide a solid context to the observed results.
+As we conduct our measurements, it is these principles and 
+equations that we rely upon to draw conclusions and inferences about the 
+behavior of blackbody radiation. By understanding the theoretical underpinning 
+of our experiment, we can provide a solid context to the observed results.
 
 \section{Experimental setup}
 \subsection{Apparatus}
-
-Ideas behind the particular technique should be briefly
-discussed. Enclose references. Sketches, pictures, and
-suitable schematics should be included and explained
-concisely. All major components of the system should be
-mentioned and their role clearly motivated. This section
-is not simply a list of components and it is not an
-instruction manual. 
+In order to measure our blackbody spectrum, we used an already constructed
+broadband prism spectrometer.The spectrometer features an entrance slit, 
+S1, and an exit slit, S2. 
+Positioned before S1 is the radiation source. 
+Radiation that moves through S1 encounters a 1-inch diameter off-axis 
+parabolic mirror, M1, which is the Thorlabs model MPD169-P01. Ideally, 
+M1 should be fully illuminated by the source. More specifics on this 
+off-axis parabola can be found on its product website. The mirror's design 
+is such that it takes in light from a point source and emits a parallel beam 
+devoid of any aberrations. The mirror boasts a reflected focal length of 
+6 inches and is structured for a right-angle reflection. It's crucial that 
+the 6-inch gap between the slit and the mirror's center is accurately
+maintained, and the reflection angle should be nearly 90 degrees.
+\begin{figure}[ht]
+ \begin{center}
+ \includegraphics*[width=3.5in]{Apparatus_1.jpg}
+ \caption{A vertical view of our spectrometer.\label{fig:apparatus_1} }
+ \end{center}
+\end{figure}
+The light beam from M1, which is parallel, is channeled to the input 
+face of a barium fluoride (BaF2) equilateral prism, with the part number 
+BAFPRISM25.4-60 from Crystan Optics. This prism, with each side measuring 
+25.4 mm x 25.4 mm, bends the light, resulting in a parallel exit beam. 
+This exiting beam is then caught by another off-axis parabolic mirror, 
+M2, identical in design to M1. This mirror concentrates the light once again. 
+Similar to M1, it's crucial for M2 to reflect at a 90-degree angle,
+and the arrow on its mounting bracket should be aligned with the parallel 
+light rays.
 
 
 
 \begin{figure}[ht]
-  %
-  % placement specifier = { h,t,b,p,!,H }
-  % see the following url for placement specifier definitions:
-  % http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
-  %
- \begin{center}
-%  \includegraphics*[width=3.5in]{string_theory.pdf}
-  %
- \caption{ My Caption, in all its glory.\label{fig:apparatus} }
- % See http://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
- %  for information on labels.
- \end{center}
-\end{figure}
+  \begin{center}
+  \includegraphics*[width=3.5in]{Apparatus_2.png}
+  \caption{A sketch of our spectrometer.\label{fig:apparatus_2} }
+  \end{center}
+ \end{figure}
+
+
+ 
+Radiation that traverses slit S2 is detected by a thermopile detector 
+(Dexter Research model 2M equipped with xenon fill gas, an internal thermistor, 
+and a barium fluoride window). The detector features a 2 mm x 2 mm 
+semiconductor "island", which constitutes 
+its sensitive region. This island is anchored by a slender membrane with minimal 
+thermal conductance. On this island, a sequence of tiny semiconductor thermocouple 
+junctions is positioned, termed as "hot junctions". Another sequence of thermocouple 
+junctions is affixed to a ceramic substrate connected to the device's casing, 
+called the "cold junctions". These paired thermocouple arrays are configured to 
+deductively measure the temperature variance between the hot and cold junctions. 
+Positioned right behind a barium fluoride window is the sensitive region. Radiation 
+passing through this window warms up the sensitive area, leading to a voltage 
+emission from the apparatus that correlates with the power of the impinging radiation.
+\begin{figure}[ht]
+  \begin{center}
+  \includegraphics*[width=3.5in]{Apparatus_3.jpg}
+  \caption{A diagram of how light rays are deflected in a prism.\label{fig:apparatus_3} }
+  \end{center}
+ \end{figure}
+The slit S2, mirror M2, and the detector are all affixed to a unified "detector platform". 
+This platform is maneuverable via a motorized rotation stage (Newport Model URM100 PE). 
+For a source emitting a singular wavelength, it's feasible to adjust the platform's 
+orientation such that the projection of S1 aligns with S2. Consequently, nearly all light 
+transitioning through S1 also navigates through S2 and is captured by the detector. 
+However, if the source's wavelength alters, the projection of S1 no longer aligns with S2 
+due to the prism's distinct angular deviation. Put simply, the detector perceives light 
+with a singular angular deviation—or in essence, a single wavelength—at any given moment. 
+This observed wavelength can be modified by rotating the detector platform, thereby directing 
+rays with varied deviation angles onto the detector. By systematically varying the platform's 
+angle across a spectrum, one can thus ascertain the detected power based on the wavelength, 
+thereby determining the source's spectral distribution.
 
 \subsection{Data Collection}
 
-Data taking procedures should be described and various modes of
-data collection explained. Calibration procedures and
-relevant plots and numerical tables should be included.
-State clearly what measurements were taken for the final
-data analysis. Describe `doing the experiment' so it would
-be helpful to other students in the future. This may need
-to include physics arguments {\em what } and {\em how } data should
-be collected.
+In order to collect data, we employed a method that was consistent
+and reliable each time with respect to the variance in our spectrometer setup.
+The main difficulties we faced were that the optics were not consistently
+aligned each time we began our experiment. By far, the most frustrating 
+component was the thermopile detector. This detector sat on an extremely loose 
+axis, and was easily nudged out of place. Therefore, we had a step by step 
+routine each time we began to collect data. At the beginning of each lab day,
+we set up a 635nm laser, and conducted the following steps to ensure our 
+spectrometer setup was consistent and accurate.
+\begin{itemize}
+  \item Adjusted the prism angle adjustment to the angle that gave us the highest optical output.
+  \item Adjusted the angle of the stage to match the minimum deflection angle of our 635nm laser.
+  \item Adjusted the thermopile detector to be in line with the stage.
+\end{itemize}
 
+Expanding on these bullet points, firstly, we rotated the prism's angle to find
+an angle that gave us the maximum optical output. This angle was measured once
+to be approximately 154.5 $\pm$ 1 degrees. Then, using our 635nm laser again, we 
+measured the output of the thermopile detector and amplifier, while changing the
+stage angle. When this output was maximized, we reset the angle the stage was at
+to 34.894 degrees, as this is the minimum deflection angle for a 60 degree prism, 
+and light of 635nm.
 
+Then, we began collecting data using our DAQ box and the blackbody source. 
+Over intervals of 100 degrees Celsius, we rotated the stage from 29 degrees 
+to 35 degrees. This was done to measure the intensity of the blackbody spectra
+as the angle varied. We began at a temperature of 600 degrees Celsius, and stopped
+at a temperature of 1100 degrees Celsius. The combined intensity versus angle graph
+is shown in Figure 4. 
+
+In Figure 4, we see a clear spike in the intensities at around 34 degrees for
+all of the temperatures.
+
+\begin{figure}[ht]
+  \begin{center}
+  \includegraphics*[width=4.5in]{combinedSpectra.png}
+  \caption{Combined Intensity vs. Angle data for all temps.\label{fig:spectra} }
+  \end{center}
+ \end{figure}
+ 
 \subsection{Data Analysis}
+As stated in the lab manual, the main trouble with analyzing this data is that
+one cannot simply convert the angular deflectio, $\delta$ to the 
+wavelength, $\lambda$. The reason for this is because the differential interval
+$\Delta \delta$ is not equivalent to $\Delta \lambda$. Furthermore, another 
+difficulty we are faced with is actually producing the inverted function 
+$\lambda(\delta)$ to convert from $\delta \text{ to } \lambda$ in our measured
+intensity spectrum. We obtained the latter function through interpolation. 
+Since we have the angular deflection as a function of the index and the index 
+as a function of wavelength, we can  determine the angular deflection as a 
+function of wavelength. From this, we interpolate (instead of finding the 
+result analytically) in order to determine the inverse function. The relevant 
+equations are found below. 
+\begin{equation}
+  n^2(\lambda) = 1.33973 + \frac{0.81070 \lambda^2}{\lambda^2 - 0.10065^2} + \frac{0.19652 \lambda^2}{\lambda^2 - 29.87^2} + \frac{4.52469 \lambda^2}{\lambda^2 - 53.82^2}
+\end{equation}
 
-% This is the most important section of the report.
-% Describe data analysis. Details! Perhaps include a figure and refer
-% the reader to it! See Figure~\ref{fig:apparatus}. Maybe you will need
-% to include a table. See Table~\ref{tab:events}.
+\begin{equation}
+  \delta = \phi_1 + \arcsin(n\sin(\alpha - \arcsin(\sin \phi_1 n^{-1}))) - \alpha
+\end{equation}
 
-Describe calculations of the final results.
-Thoroughly address error analysis and discussion of measurement
-uncertainties. Remember: NO EXPERIMENTAL RESULT CAN BE QUOTED
-WITHOUT AN ERROR BAR! Do not forget about random or systematic
-uncertainties. Be sure to propagate errors correctly!
-Include a demonstrative graph when possible.
-%See Figure~\ref{fig:results}.
+Because we know that $\alpha \text{ is 60 degrees, and } \phi_1 \text{ is 47.447 degrees}$,
+we can go ahead and calculate the inverse function $\lambda(\delta)$.
 
+Our next step regards changing the intensity as a function of deflection angle
+to intensity as a function of wavelength. As discussed above, we cannot
+simply drop in our function for wavelength, as the differential intervals are
+different. To remedy this, we say that $\lambda_i = \lambda(\delta_i)$, and 
+$B(\lambda_i) = [B(\delta_i) * \frac{d \delta}{ d \lambda)}]|_{\lambda = \lambda(\delta_i)}$.
+This calculation accounts for the disparity in differential intervals. 
 
-Make final assessment and interpretation after that.
-Discuss apparatus problems if any. Suggestions for
-lab setup or approach improvements are welcome!
+We then fit this data to Planck's Law (Equation 2), shown in Figure 5. 
+Doing so, we were able to calculate the value of $\frac{hc}{k_B}$. Our average
+value of this quantity was 0.0148 $\pm$ .0033. 
 
+Furthermore, we conducted analysis on the Stefan-Boltzmann Law, as well as Wein's Law.
+% Stefan-Boltzmann's Law
+The Stefan-Boltzmann Law is given by:
+\begin{equation}
+E = \sigma T^4
+\end{equation}
+where:
+\begin{itemize}
+    \item \( E \) is the energy radiated per unit area.
+    \item \( \sigma \) is the Stefan-Boltzmann constant, \( 5.67 \times 10^{-8} \, \text{W m}^{-2} \text{K}^{-4} \).
+    \item \( T \) is the absolute temperature in Kelvin.
+\end{itemize}
+
+% Wien's Law
+Wien's displacement law is given by:
+\begin{equation}
+\lambda_{\text{max}} = \frac{b}{T}
+\end{equation}
+where:
+\begin{itemize}
+    \item \( \lambda_{\text{max}} \) is the peak wavelength.
+    \item \( b \) is Wien's displacement constant, approximately \( 2.897 \times 10^{-3} \, \text{m K} \).
+    \item \( T \) is the absolute temperature in Kelvin.
+\end{itemize}
+Figures 6 and 7 show that our data supports Wein's Law and the Stefan-Boltzmann Law.
+We were able to determine that the b in Wein's law had a value of 2.98 $\pm$ .04 $\times 10^{-3}$ mK
 
 
 \begin{figure}[ht]
-  %
-  % placement specifier = { h,t,b,p,!,H }
-  % see the following url for placement specifier definitions:
-  % http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
-  %
- \begin{center}
-%  \includegraphics*[width=3.5in]{centrifugal_force.pdf}
-  %
-  %
- %\caption{ The experiment provided interesting results.\label{fig:results} }
- % See http://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
- %  for information on labels.
- \end{center}
-\end{figure}
-
-
-%
-% Note: the position of the table does not always depend on its position here. See
-% http://en.wikibooks.org/wiki/LaTeX/Tables
-% for details.
-%
-
-\begin {table}[ht]
-{
-{%\footnotesize
-\begin {center}
-\begin {tabular} {c | c c  c | c | c c }
-\hline\hline
-Run 			&   ~~POT~~ 		&
-\multicolumn{2}{ | c } {Predicted}  &   \multicolumn{2}  {| c} {Selected} \\
-Period		& $(10^{20})$	&
-\multicolumn{2}{ | c } {(No oscillations)}  &   \multicolumn{2}  {| c} {(Far Detector)} \\
-			    &
-			& \multicolumn{1} {| c } {~~~Fully} & \multicolumn{1} { c } {~~~Partially}
-			& \multicolumn{1} {| c } {~~~Fully} & \multicolumn{1} { c } {~~~Partially} \\
-			
-\hline
-I			& 1.269		
-			& \multicolumn{1} {| r } {426 } & \multicolumn{1} { r } {375 }
-		     	& \multicolumn{1} {| r } {318 } & \multicolumn{1} { r } {357 } \\
-
-II		     	& 1.943
-			& \multicolumn{1} {| r } {639 } & \multicolumn{1} { r } {565 }
-		    	& \multicolumn{1} {| r } {511 } & \multicolumn{1} { r } {555 } \\
-
-\hline
-Total			& 7.246
-			& \multicolumn{1} {| r } {2,451 } & \multicolumn{1} { r } {2,206 }
-		     	& \multicolumn{1} {| r } {1,986 } & \multicolumn{1} { r } {2,017 } \\
-
-\hline% \hline
-\end {tabular}
-\end {center}
-}
-}
-\caption {\label{tab:events}
-Predicted and observed numbers of events classified in the Far Detector as fully and
-partially reconstructed charged current interactions shown for all running periods.
- }
-\end {table}
+  \begin{center}
+  \includegraphics*[width=4.5in]{CombinedRadvAngle.png}
+  \caption{Combined Radiance vs. Wavelength data for all temps.\label{fig:combinedrad} }
+  \end{center}
+ \end{figure}
+ 
+ \begin{figure}[ht]
+  \begin{center}
+  \includegraphics*[width=4.5in]{wienslawplot.png}
+  \caption{Wein's Law Fit.\label{fig:wein} }
+  \end{center}
+ \end{figure}
+ \begin{figure}[ht]
+  \begin{center}
+  \includegraphics*[width=4.5in]{stefanboltzmannplot.png}
+  \caption{Stefan-Boltzmann Law Fit.\label{fig:stebo} }
+  \end{center}
+ \end{figure}
 
 
 \section{Results}
-
-Clearly present the result of your analysis. Make sure
-you include the uncertainties. No experimental result
-can be quoted without an error attached to it.
-
-Your results should be compared with predictions and other
-measurements.
+Figures 5, 6, and 7 all show good fits with their respective laws. However,
+in Figure 5, we see clear dips at around 2.75$\mu$m and 4.3$\mu$m in each 
+of the temperature spectra. These dips correspond to the absorbtion spectrum
+of Carbon Dioxide, and are therefore an experimental anomaly, not one associated
+with Planck's Law. One way to combat this anomaly would be to try and conduct
+the experiment in a sort of vaccuum chamber, or a chamber filled with a pure gas
+of known absorbtion spectra. Doing so would give a better and more clear
+view of the data, as that unknown variable would have been brought under control.
+We were able to determine that the b in Wein's law had a value of 2.98 $\pm$ .04 $\times 10^{-3}$ mK, and
+that our average value of $\frac{hc}{k_B}$ was 0.0148 $\pm$ .0033. 
 
 
 
 \section{Summary and conlcusions}
 
-Summarize briefly the results of the experiment.
-Acknowledge (i.e., thank for) contributions or help
-of your partner(s) and or
-others (TA, machine shop, software used, ...).
+Our experiment made use of a broadband prism spectrometer equipped with a BaF$_2$ equilateral prism. This setup allowed us to measure the relative spectral radiance emanating from a nearly ideal blackbody source at temperatures of 600, 650, 700, 800, 900, 1000, and 1100$^{\circ}$C. The spectral radiance plots we obtained were in close alignment with the shape forecasted by Planck's law. Furthermore, they showcased the linear relationship between $\lambda_{\text{max}}$ and $\frac{1}{T}$ as proposed by Wien's law, as well as the linear correlation between the blackbody's radiance and $T^4$. From our data, we ascertained the value of $\frac{hc}{kB}$ to be $(.0148 \pm .0033)$ m$\cdot$K, and the b constant in Wien's law to be $(2.98\pm0.04)\times10^{-3}$ m$\cdot$K. Our computed value for $\frac{hc}{kB}$ was consistent with the established literature, however, our value for b was not. 
+\paragraph*{Acknowledgments}
+I would like to thank my lab partner, Sannidhya Desai for his assistance on data
+collection. Furthermore, I'd like to thank Dr. Dan Heinzen,
+Parth Dave, and Konner Feldman for their assistance throughout the measurement and 
+set up processes.
+
+
+
 
 
 \begin{thebibliography}{9}
