@@ -463,4 +463,5 @@ TSWLatexianTemp*
 .DS_Store
 .fdb_latexmk
 
-.Lab_3_Brown/Data/*
+
+Lab_3_Brown/Data/*
