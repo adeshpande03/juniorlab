@@ -22,10 +22,10 @@ def compute_displacement(dots1, dots2, frame_num):
 
     if len(dots1) == 0 or len(dots2) == 0:
         return results
-
+    # dots1[0, :, 0] - dots2[0, :, 0]
     # Compute pairwise distance matrix
     distance_matrix = np.linalg.norm(
-        dots1[:, np.newaxis, :2] - dots2[np.newaxis, :, :2], axis=2
+        dots1[0, :, :2] - dots2[0, :, :2], axis=2
     )
 
     # Use Hungarian algorithm to find optimal assignment
