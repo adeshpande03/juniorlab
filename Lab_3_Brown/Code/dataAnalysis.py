@@ -13,7 +13,7 @@ def detect_dots(image):
     )
     if circles is not None:
         circles = np.uint16(np.around(circles))
-        return circles[0, :]
+        return circles
     return []
 
 
@@ -45,8 +45,31 @@ def compute_displacement(dots1, dots2, frame_num):
     return results
 
 
-def track_dot_displacement(tif_file):
-    images = io.imread(tif_file)
+def subtract_background(tif_file, background):
+    images_original = io.imread(tif_file, cv2.IMREAD_GRAYSCALE)
+    background = io.imread(background, cv2.IMREAD_GRAYSCALE)
+    background_avg = background[0]
+    for i in range(len(background)):
+        if i == 0:
+            pass
+        else:
+            alpha = 1.0 / (i + 1)
+            beta = 1.0 - alpha
+            background_avg = cv2.addWeighted(
+                background[i], alpha, background_avg, beta, 0.0
+            )
+    background_avg = cv2.bitwise_not(background_avg)
+    images = [
+        cv2.bitwise_not(
+            cv2.subtract(cv2.bitwise_not(images_original[i]), background_avg)
+        )
+        for i in range(len(images_original))
+    ]
+    return images
+
+
+def track_dot_displacement(tif_file, background):
+    images = subtract_background(tif_file, background)
     all_results = []
 
     prev_dots = detect_dots(images[0])
@@ -60,13 +83,14 @@ def track_dot_displacement(tif_file):
     return all_results
 
 
-tif_file = "Lab_3_Brown/Data/Day 1 Trial 1 - 1 micron - 10x magnification/image_0.tif"
-displacements = track_dot_displacement(tif_file)
-# print(displacements)
-# np.save(f"{tif_file[:-4]}.txt", displacements)
-with open(f"{tif_file[:-4]}.txt", "w") as f:
-    f.write("[")
-    for line in displacements:
-        f.write(f"{line},\n")
-    f.write("]")
-pprint(displacements)
+tif_file = "Lab_3_Brown/Data/Day 2 Trial 1 - 2 micron - 10x magnification/image_2.tif"
+background = "Lab_3_Brown/Data/Day 2 Trial 1 - 2 micron - 10x magnification/image_3.tif"
+displacements = track_dot_displacement(tif_file, background)
+# # print(displacements)
+# # np.save(f"{tif_file[:-4]}.txt", displacements)
+# with open(f"{tif_file[:-4]}.txt", "w") as f:
+#     f.write("[")
+#     for line in displacements:
+#         f.write(f"{line},\n")
+#     f.write("]")
+# pprint(displacements)
