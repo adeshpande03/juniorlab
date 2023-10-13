@@ -9,40 +9,40 @@ def detect_dots(image):
     # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = image
     circles = cv2.HoughCircles(
-        gray, cv2.HOUGH_GRADIENT, 1, 20, param1=50, param2=30, minRadius=0, maxRadius=0
+        gray, cv2.HOUGH_GRADIENT, 1, 20, param1=50, param2=30, minRadius=3, maxRadius=20
     )
     if circles is not None:
         circles = np.uint16(np.around(circles))
-        return circles
+        return circles[0]
     return []
 
 
-def compute_displacement(dots1, dots2, frame_num):
-    results = []
+# def compute_displacement(dots1, dots2, frame_num):
+#     results = []
 
-    if len(dots1) == 0 or len(dots2) == 0:
-        return results
-    # dots1[0, :, 0] - dots2[0, :, 0]
-    # Compute pairwise distance matrix
-    distance_matrix = np.linalg.norm(
-        dots1[0, :, :2] - dots2[0, :, :2], axis=2
-    )
+#     if len(dots1) == 0 or len(dots2) == 0:
+#         return results
+#     # dots1[0, :, 0] - dots2[0, :, 0]
+#     # Compute pairwise distance matrix
+#     distance_matrix = np.linalg.norm(
+#         dots1[0, :, :2] - dots2[0, :, :2], axis=2
+#     )
 
-    # Use Hungarian algorithm to find optimal assignment
-    row_ind, col_ind = linear_sum_assignment(distance_matrix)
+#     # Use Hungarian algorithm to find optimal assignment
+#     row_ind, col_ind = linear_sum_assignment(distance_matrix)
 
-    for r, c in zip(row_ind, col_ind):
-        displacement = distance_matrix[r, c]
-        results.append(
-            {
-                "dot_id": r,
-                "frame": frame_num,
-                "position": tuple(dots2[c][:2]),
-                "displacement": displacement,
-            }
-        )
+#     for r, c in zip(row_ind, col_ind):
+#         displacement = distance_matrix[r, c]
+#         results.append(
+#             {
+#                 "dot_id": r,
+#                 "frame": frame_num,
+#                 "position": tuple(dots2[c][:2]),
+#                 "displacement": displacement,
+#             }
+#         )
 
-    return results
+#     return results
 
 
 def subtract_background(tif_file, background):
@@ -67,25 +67,56 @@ def subtract_background(tif_file, background):
     ]
     return images
 
-
-def track_dot_displacement(tif_file, background):
+def track_dots(tif_file, background):
     images = subtract_background(tif_file, background)
-    all_results = []
+    trackers = cv2.MultiTracker_create()
+    circles = detect_dots(images[0])
+    frame = images[0]
+    for circle in circles:
+        (x, y, r) = [int(v) for v in circle]
+        # box = cv2.rectangle(frame, (x-r, y-r), (x+r, y+r), (0, 255, 0), 2)
+        box = (x-r, y-r, 2*r, 2*r)
+        tracker = cv2.TrackerCSRT_create()
+        trackers.add(tracker, frame, box)
+        # cv2.circle(frame, (x,y), r, (0, 255, 0), 2)
+    # cv2.imshow("Frame", frame)
+    # cv2.waitKey(0)
+    for i in range(len(images)):
+        frame = images[i]
+        (success, boxes) = trackers.update(frame)
+        for box in boxes:
+            (x, y, w, h) = [int(v) for v in box]
+            cv2.rectangle(frame, (x,y), (x+w, y+h), (0, 255, 0), 2)
+        cv2.imshow("Frame", frame)
+        key = cv2.waitKey(1) & 0xFF
+        # if key == ord("s"):
+        #     box = cv2.selectROI("Frame", frame, fromCenter=False, showCrosshair=True)
+        #     tracker = cv2.TrackerCSRT_create()
+        #     trackers.add(tracker, frame, box)
+        if key == ord("q"):
+            break
+    cv2.destroyAllWindows()
 
-    prev_dots = detect_dots(images[0])
 
-    for idx in range(1, len(images)):
-        current_dots = detect_dots(images[idx])
-        frame_results = compute_displacement(prev_dots, current_dots, idx)
-        all_results.extend(frame_results)
-        prev_dots = current_dots
+# def track_dot_displacement(tif_file, background):
+#     images = subtract_background(tif_file, background)
+#     all_results = []
 
-    return all_results
+#     prev_dots = detect_dots(images[0])
+
+#     for idx in range(1, len(images)):
+#         current_dots = detect_dots(images[idx])
+#         frame_results = compute_displacement(prev_dots, current_dots, idx)
+#         all_results.extend(frame_results)
+#         prev_dots = current_dots
+
+#     return all_results
 
 
 tif_file = "Lab_3_Brown/Data/Day 2 Trial 1 - 2 micron - 10x magnification/image_2.tif"
 background = "Lab_3_Brown/Data/Day 2 Trial 1 - 2 micron - 10x magnification/image_3.tif"
-displacements = track_dot_displacement(tif_file, background)
+track_dots(tif_file, background)
+# displacements = track_dot_displacement(tif_file, background)
 # # print(displacements)
 # # np.save(f"{tif_file[:-4]}.txt", displacements)
 # with open(f"{tif_file[:-4]}.txt", "w") as f:
