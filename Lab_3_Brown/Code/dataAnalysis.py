@@ -9,41 +9,29 @@ def detect_dots(image):
     # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = image
     circles = cv2.HoughCircles(
-        gray, cv2.HOUGH_GRADIENT, 1, 20, param1=50, param2=30, minRadius=3, maxRadius=20
+        gray, cv2.HOUGH_GRADIENT, 1, 20, param1=50, param2=10, minRadius=1, maxRadius=5
     )
     if circles is not None:
         circles = np.uint16(np.around(circles))
         return circles[0]
     return []
 
-
-# def compute_displacement(dots1, dots2, frame_num):
-#     results = []
-
-#     if len(dots1) == 0 or len(dots2) == 0:
-#         return results
-#     # dots1[0, :, 0] - dots2[0, :, 0]
-#     # Compute pairwise distance matrix
-#     distance_matrix = np.linalg.norm(
-#         dots1[0, :, :2] - dots2[0, :, :2], axis=2
-#     )
-
-#     # Use Hungarian algorithm to find optimal assignment
-#     row_ind, col_ind = linear_sum_assignment(distance_matrix)
-
-#     for r, c in zip(row_ind, col_ind):
-#         displacement = distance_matrix[r, c]
-#         results.append(
-#             {
-#                 "dot_id": r,
-#                 "frame": frame_num,
-#                 "position": tuple(dots2[c][:2]),
-#                 "displacement": displacement,
-#             }
-#         )
-
-#     return results
-
+ix = -1
+def click_event(event, x, y, flags, params):
+    global ix
+    if event == cv2.EVENT_LBUTTONDOWN:
+        ix = x
+    
+def get_scale(ruler, background):
+    image = subtract_background(ruler, background)
+    x = []
+    for i in range(2):
+        cv2.imshow("Frame", image[0])
+        cv2.setMouseCallback("Frame", click_event)
+        cv2.waitKey(0)
+        x.append(ix)
+    cv2.destroyAllWindows()
+    return x[1] - x[0]
 
 def subtract_background(tif_file, background):
     images_original = io.imread(tif_file, cv2.IMREAD_GRAYSCALE)
@@ -59,15 +47,28 @@ def subtract_background(tif_file, background):
                 background[i], alpha, background_avg, beta, 0.0
             )
     background_avg = cv2.bitwise_not(background_avg)
-    images = [
-        cv2.bitwise_not(
-            cv2.subtract(cv2.bitwise_not(images_original[i]), background_avg)
-        )
-        for i in range(len(images_original))
-    ]
+    # cv2.imshow("Frame", images_original)
+    # cv2.waitKey(0)
+    # cv2.imshow("Frame", background_avg)
+    # cv2.waitKey(0)
+    if len(images_original.shape) == 2:
+        images = [
+            cv2.bitwise_not(
+                cv2.subtract(cv2.bitwise_not(images_original), background_avg)
+            )
+            for i in range(len(images_original))
+        ]
+    else :
+        images = [
+            cv2.bitwise_not(
+                cv2.subtract(cv2.bitwise_not(images_original[i]), background_avg)
+            )
+            for i in range(len(images_original))
+        ]
     return images
 
 def track_dots(tif_file, background):
+    all_positions = []
     images = subtract_background(tif_file, background)
     trackers = cv2.MultiTracker_create()
     circles = detect_dots(images[0])
@@ -82,11 +83,14 @@ def track_dots(tif_file, background):
     # cv2.imshow("Frame", frame)
     # cv2.waitKey(0)
     for i in range(len(images)):
+        positions = []
         frame = images[i]
         (success, boxes) = trackers.update(frame)
         for box in boxes:
             (x, y, w, h) = [int(v) for v in box]
+            positions.append((x+w/2, y+h/2))
             cv2.rectangle(frame, (x,y), (x+w, y+h), (0, 255, 0), 2)
+        all_positions.append(positions)
         cv2.imshow("Frame", frame)
         key = cv2.waitKey(1) & 0xFF
         # if key == ord("s"):
@@ -96,26 +100,36 @@ def track_dots(tif_file, background):
         if key == ord("q"):
             break
     cv2.destroyAllWindows()
+    array = np.array(all_positions)
+    np.save("Lab_3_Brown/array", array)
+    return array
 
 
-# def track_dot_displacement(tif_file, background):
-#     images = subtract_background(tif_file, background)
-#     all_results = []
+def compute_displacement(tif_file, background):
+    all_positions = track_dots(tif_file, background)
+    # all_positions = np.load("Lab_3_Brown/array.npy")
+    all_results = []
+    for i in range(1, len(all_positions)):
+        all_results.append(all_positions[i] - all_positions[0])
+        # current_dots = detect_dots(images[idx])
+        # frame_results = compute_displacement(prev_dots, current_dots, idx)
+        # all_results.extend(frame_results)
+        # prev_dots = current_dots
+    return np.array(all_results)
 
-#     prev_dots = detect_dots(images[0])
-
-#     for idx in range(1, len(images)):
-#         current_dots = detect_dots(images[idx])
-#         frame_results = compute_displacement(prev_dots, current_dots, idx)
-#         all_results.extend(frame_results)
-#         prev_dots = current_dots
-
-#     return all_results
-
-
-tif_file = "Lab_3_Brown/Data/Day 2 Trial 1 - 2 micron - 10x magnification/image_2.tif"
-background = "Lab_3_Brown/Data/Day 2 Trial 1 - 2 micron - 10x magnification/image_3.tif"
-track_dots(tif_file, background)
+tif_file = "Lab_3_Brown/Data/Day 2 Trial 3 - 1 micron - 10x magnification/image_0.tif"
+background = "Lab_3_Brown/Data/Day 2 Trial 3 - 1 micron - 10x magnification/image_2.tif"
+ruler = "Lab_3_Brown/Data/Day 2 Trial 3 - 1 micron - 10x magnification/image_4.tif"
+scale = 50e-6/get_scale(ruler, background)
+displacements = scale*compute_displacement(tif_file, background)
+e_x2 = []
+for i in displacements:
+    e_x2.append(np.average(np.linalg.norm(i, axis=1)**2))
+e_x2 = np.array(e_x2)
+# print(e_x2)
+# print(len(e_x2))
+time = (np.arange(0, len(e_x2))+1)*0.2
+print(np.average(np.gradient(e_x2, time)))
 # displacements = track_dot_displacement(tif_file, background)
 # # print(displacements)
 # # np.save(f"{tif_file[:-4]}.txt", displacements)
