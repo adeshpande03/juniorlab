@@ -14,6 +14,7 @@ def detect_dots(image):
         gray, cv2.HOUGH_GRADIENT, 1, 20, param1=50, param2=25, minRadius=4, maxRadius=15
         # for 1 micron
         # gray, cv2.HOUGH_GRADIENT, 1, 20, param1=80, param2=13, minRadius=1, maxRadius=5
+        # ignore this one
         # gray, cv2.HOUGH_GRADIENT, 1, 20, param1=50, param2=5, minRadius=1, maxRadius=5
     )
     # circles = circles.reshape(1, circles.shape[1], circles.shape[2])
