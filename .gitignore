@@ -462,3 +462,5 @@ TSWLatexianTemp*
 #*Notes.bib
 .DS_Store
 .fdb_latexmk
+
+*.tif
