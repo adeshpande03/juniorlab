@@ -21,7 +21,8 @@ def refractiveIndex(wv):
         + 0.19652 * wvSquared / (wvSquared - 29.87**2)
         + 4.52469 * wvSquared / (wvSquared - 53.82**2)
     )
-    return n #n is a number
+    return n  # n is a number
+
 
 c = refractiveIndex(56) * 5
 
@@ -54,23 +55,16 @@ def analyzeData(filename):
 
     if "600C" in filename:
         mask = (y_axis <= 0.0007) & (y_axis >= -0.001)
-
-        # Filter both x and y using the mask
         x_axis = x_axis[mask]
         y_axis = y_axis[mask]
 
     elif "700C" in filename:
         mask = (y_axis <= 0.005) & (y_axis >= -0.001)
-
-
-        # Filter both x and y using the mask
         x_axis = x_axis[mask]
         y_axis = y_axis[mask]
 
     else:
         mask = (y_axis <= 0.01) & (y_axis >= -0.001)
-
-        # Filter both x and y using the mask
         x_axis = x_axis[mask]
         y_axis = y_axis[mask]
     # plt.ylim(0, 0.009)
@@ -95,7 +89,7 @@ def analyzeData(filename):
     perr = np.sqrt(np.diag(covariance))
     aerr = perr[0]
     berr = perr[1]
-    # print(b*(int(filename[3:-5])+273.15)*1e-6, berr*(int(filename[3:-5])+273.15)*1e-6)
+    print(f"{filename[3:-5]}", "b", b*(int(filename[3:-5])+273.15)*1e-6, "berr", berr*(int(filename[3:-5])+273.15)*1e-6)
     pl = planck_law(wvRange, *params)
     wvMax = wvRange[np.argmax(pl)]
     integral = simpson(pl, wvRange)
@@ -140,7 +134,6 @@ if __name__ == "__main__":
     integrals = []
     for temp in temps:
         if temp == 700:
-
             output = analyzeData(f"d4_{temp}C.txt")
         else:
             output = analyzeData(f"d3_{temp}C.txt")
@@ -155,7 +148,7 @@ if __name__ == "__main__":
     # get average hc/k
     b = np.mean(bs)
     berr = np.linalg.norm(berrs)
-    print(b, berr)
+    print("b hc/k", b, berr)
 
     # graph lambda_max vs temperature
     temps = np.asarray(temps)
@@ -194,9 +187,4 @@ if __name__ == "__main__":
     # ss_tot = np.sum((integrals-np.mean(integrals))**2)
     # r_squared = 1- ss_res/ss_tot
     # print(r_squared)
-            (analyzeData(f"d4_{temp}C.txt"))
-            continue
-        (analyzeData(f"d3_{temp}C.txt"))
-
-    print(angularDeflection(635e-9))
     # analyzeData(f"d3_600C.txt")

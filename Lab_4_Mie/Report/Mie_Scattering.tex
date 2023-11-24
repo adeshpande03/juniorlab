@@ -1,0 +1,111 @@
+\documentclass[10pt,letterpaper,onecolumn]{article}
+\usepackage{amsmath}
+\usepackage{graphicx} 
+\usepackage{hyperref}
+\usepackage{natbib}
+\begin{document}
+\title{Observation of Mie Scattering from 1-micron Latex Particles }
+
+
+\author{
+ Akhil Deshpande \\*
+  \\*
+ PHY 353L Modern Laboratory \\*
+ Department of Physics \\*
+ The University of Texas at Austin \\*
+ Austin, TX 78712, USA
+}
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+    Our experiment made use of a laser and LIA setup to determine whether or not we were able to observe Mie scattering. While we did so, our data was not within the accepted value for the phase shift between the two components of Mie scattering.
+    We then observe a phase shift between these two fits of about 1.11 radians, or ~63.5 degrees. Usually, we would expect to see a phase shift of about 90 degrees, so our measurements for the phase shift do not quite align with the accepted material, as it was ~63.5 deg.
+\end{abstract}
+
+
+\section{Introduction}
+\subsection{Physics Motivation}
+Mie scattering is a phenomenon that is observed when the scattering of light
+is predominantly in the forward and reverse directions. This is different from Rayleigh scattering
+because in Rayleigh scattering light is scattered more evenly in each direction \cite{LightScattering2019}. 
+\begin{figure}
+    \begin{center}
+        \includegraphics*[width=3.5in]{PatternsScatt.png}
+        \caption{A diagram showing the approximate scattering for Rayleigh and Mie scattering.
+        As you can see, Mie scattering happens more in the incident direction than Rayleigh scattering. 
+        Image taken from \cite{LightScattering2019}.}
+    \end{center}
+\end{figure}
+Mie scattering and Rayliegh scattering occur when light
+strikes particles of different sizes. When the particle size is on the
+order of the wavelength, we observe Mie scattering. More specifically, 
+the particle's diameter should be between .1$\lambda$ and $\lambda$, where 
+$\lambda$ represents the wavelength of the light \cite{Sharma:2003}.
+\subsection{Theoretical Background}
+
+Mie scattering is significant when the size parameter \( \alpha \), defined as \( \alpha = \frac{2\pi r}{\lambda} \), is close to or larger than unity. Here, \( r \) represents the radius of the particle and \( \lambda \) is the wavelength of the incident radiation. The theory takes into account the complex refractive index \( m \) of the scattering particle, which is expressed as \( m = n - ik \), where \( n \) is the real part of the refractive index and \( k \) is the imaginary part representing absorption.
+
+The solution to Mie scattering is obtained by expanding the incident plane wave into a series of spherical harmonics and applying boundary conditions to the electric and magnetic fields at the surface of the particle. The result is a set of Mie coefficients, \( a_n \) and \( b_n \), which describe the amplitude of each harmonic in the scattered field. The intensity and angular distribution of the scattered light are determined by these coefficients and can be calculated for different scattering angles.
+
+\subsection{Applications}
+
+Mie scattering has a wide range of applications, from explaining the white color of clouds, which is due to the scattering of sunlight by the water droplets, to the study of visibility in the atmosphere caused by various particulate matter. It also plays a crucial role in understanding the optical properties of aerosols, biological cells, and nanoparticles.
+
+\section{Experimental Setup}
+Our experimental setup was quite simple. We used a Helium-Neon laser behind a chopper wheel that 
+passed through a half-wave plate. The beam then hit a mirror, that allowed it to project into a solution of suspended 1 micron latex particles. 
+After being scattered, the light passed through a polarizer. Then, a detector picked up the signal from the light, ensuring that background noise was mitigated with the help of a Lock-In Amplifier (LIA).
+A visual is given in Fig. 2. 
+\begin{figure}
+    \begin{center}
+        \includegraphics*[width=3.5in]{Apparatus.png}
+        \caption{A diagram taken from the Mie Scattering PHY353l webpage. This diagram outlines our apparatus.}
+    \end{center}
+\end{figure}
+\subsection{LIA}
+The Lock-In Amplifier is a machine used to ensure all data being recorded is coming from the actual light source, and not from ambient light or from background radiation.
+It works in tandem with a quickly spinning chopper wheel to determine the frequency at which the wheel moves. Then, after determining this frequency, it only amplifies signals that
+are obtained when the chopper is letting light through.
+\subsection{Half-Wave Plate}
+The half-wave plate is crucial to the experiment as it changes the orientation of the light wave. The half-wave plate 
+slows down one of the orthogonal components of light. In essence, this rotates the light depending on what angle we set the plate to.
+\subsection{Data Collection}
+We collected data by setting the half-wave plate to either 0 or 90 degrees, and rotating the polarizer through a range of degrees. We then checked the LIA to record the resulting figure as our intensity.
+\section{Data Analysis}
+\begin{figure}
+    \begin{center}
+        \includegraphics*[width=4.5in]{plot.png}
+        \caption{Our data from 3 trials of 0 and 90 degrees each averaged together. We should expect to see data that fits to a sine squared curve for both fits. This is because they model the intensities for Mie scattering, which is dependent on a sine squared model as a function of the angle of our polarizer (theta).}
+    \end{center}
+\end{figure}
+Fig. 3 shows our data that we obtained via the methods outlined in our data collection section. The two curves we see are indicative of different components of Mie scattering. While the curve with the higher amplitude is reminiscent of Rayliegh scattering, it is technically incorrect to call it so. 
+Because the light interacts only with our 1 micron latex particles, any scattering we observe is technically Mie scattering. However, we can model this light as Rayliegh scattering, as it is technically an orthogonal component of our Mie scattering light wave. We fit both curves to sine squared fits, and obtained the following equations:
+$$
+I_R = (-.213)\cos(.228(\theta) + 2.01)^2+111
+$$$$
+I_M = (.111)\cos(.257(\theta) + 1.98)^2+1.01
+$$
+Where our "Rayliegh" scattering is expressed as $I_R$ and our Mie component is expressed as $I_M$.
+We then observe a phase shift between these two fits of about 1.11 radians, or ~63.5 degrees. Usually, we would expect to see a phase shift of about 90 degrees, so our measurements for the phase shift do not quite align with the accepted material.
+However, we expected to see a difference in amplitudes. Because Mie scattering is mostly in the direction of the incident beam, the components of our fit that corresponded to Mie scattering had lower amplitudes (and therefore intensities) than those that
+corresponded to what we referred to as "Rayliegh scattering".
+
+A point of contention we faced during this experiment was a consistent fluctuation from "normal" data at around 240 degrees of our polarizer when the half-wave plate was set to the Mie position. This could have been due to an artifact or smudge on the polarizer. We failed to see any other reason the signal would deviate so consistently in these specific conditions.
+\section{Summary and Conclusions}
+Our experiment made use of a laser and LIA setup to determine whether or not we were able to observe Mie scattering. While we did so, our data was not within the accepted value for the phase shift between the two components of Mie scattering.
+\paragraph*{Acknowledgments}
+I would like to thank my lab partner, Sannidhya Desai for his assistance on data
+collection. Furthermore, I'd like to thank Dr. Dan Heinzen,
+Parth Dave, and Konner Feldman for their assistance throughout the measurement and 
+set up processes.
+
+
+
+\bibliographystyle{plain} % We choose the "plain" reference style
+\bibliography{refs} % Entries are in the refs.bib file
+
+    
+\end{document}
+

@@ -1,0 +1,176 @@
+\documentclass[10pt,letterpaper,onecolumn]{article}
+\usepackage{amsmath}
+\usepackage{graphicx} 
+\begin{document}
+\title{Verifying of brownian motion through constant observation of 2$\mu$m and 1$\mu$m spheres in H$_2$O solution }
+
+
+\author{
+ Akhil Deshpande \\*
+  \\*
+ PHY 353L Modern Laboratory \\*
+ Department of Physics \\*
+ The University of Texas at Austin \\*
+ Austin, TX 78712, USA
+}
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+    In our study, we used 1 micron and 2 micron polystyreme orbs to determine Boltzmann's Constant.
+Our results determine that our average value for $k_B$ was 1.61$\times10^{-23} \pm 1.57\times10^{-25}$. While we were not within one standard deviation of the accepted value, we were fairly consistent with accepted literature.
+    
+\end{abstract}
+
+
+\section{Introduction}
+\subsection{Physics Motivation}
+\subsubsection{Kinetic Theory Perspective}
+The motion of a Brownian particle can be understood through the kinetic theory of gases. In a fluid, molecules move randomly and collide with other molecules and suspended particles \cite{brown1828}.
+\begin{equation}
+\langle R^2 \rangle = \frac{4k_BT}{6\pi a \eta}t
+\end{equation}
+\newpage
+Where:
+\begin{itemize}
+    \item $\langle R^2 \rangle$ is the mean squared displacement of the molecule
+    \item $k_B$ is Boltzmann's constant
+    \item $T$ is the absolute temperature
+    \item $\eta$ is the viscosity of the liquid
+    \item $a$ is the radius of the particle
+    \item $t$ is time
+\end{itemize}
+\subsection{Historical context}
+Brownian motion is one of the seminal concepts in the field of physics that bridges the gap between the macroscopic world we experience and the microscopic realm of atoms and molecules. The experimental observation of Brownian motion provided crucial evidence for the existence of atoms and molecules \cite{brown1828}
+\subsubsection{Robert Brown's Observations}
+The phenomenon now known as Brownian motion was first observed by the botanist Robert Brown in 1827. While examining pollen grains of the plant \textit{Clarkia pulchella} suspended in water under a microscope, Brown noted that the tiny particles inside the pollen grains jiggled incessantly. Intriguingly, this motion persisted regardless of whether the water was still or in motion and was observed even when the water was purified to eliminate any living impurities.
+
+\subsubsection{Initial Theories and Confusion}
+For many years, the origin of this mysterious motion was not understood. Some believed it was related to the life force of the pollen, while others thought it might be due to convection currents in the fluid. Brown himself carried out a series of meticulous experiments and ruled out many potential causes, but the true nature of the phenomenon remained elusive.
+
+\subsubsection{Einstein's Contribution}
+The true significance and understanding of Brownian motion came about in the early 20th century with Albert Einstein's groundbreaking paper in 1905. Einstein provided a theoretical explanation, asserting that the motion observed was a direct result of molecular collisions. He derived a relationship between the measurable quantities like the mean square displacement of the particles and the unseen molecular parameters such as Avogadro's number.
+
+Einstein's theoretical predictions were experimentally verified by the French physicist Jean Perrin in 1908. Through meticulous experiments, Perrin was able to confirm Einstein's predictions and provide one of the first direct evidences for the existence of atoms \cite{einstein1905}.
+\subsubsection{Legacy}
+The understanding of Brownian motion has had profound implications in various fields of science. It provided the necessary experimental evidence for the atomic theory of matter. Furthermore, its study led to the development of statistical mechanics and played a key role in our understanding of thermodynamics.
+
+The importance of Brownian motion is not confined to theoretical physics. It finds applications in fields as varied as biology, where it can be used to study cellular processes, to finance, where it is used in the modeling of stock prices.
+
+
+\section{Theoretical Background}
+
+Brownian motion, named after the botanist Robert Brown who first observed the phenomenon in 1827, refers to the random motion of particles suspended in a fluid (either a liquid or a gas). This erratic movement arises from the continuous and random bombardment of the suspended particles by the molecules of the surrounding medium.
+
+From a theoretical standpoint, the kinetic theory of gases postulates that thermal motion of gas molecules leads to random collisions with any suspended particles. Over time, due to the large number of collisions, the net force experienced by a particle averages to zero. However, the displacement from its original position doesn't, leading to the random walk characteristic of Brownian motion.
+
+The study of Brownian motion has significant implications in statistical mechanics and thermodynamics. One notable outcome is the Einstein's relation, which links the diffusion coefficient of a particle undergoing Brownian motion to its temperature and viscous resistance. This relationship can be expressed as:
+\[ \langle R^2 \rangle  = \frac{k_B T}{6 \pi \eta a}t \]
+where \( \langle R^2 \rangle \) is the  mean squared displacement, \( k_B \) is Boltzmann's constant, \( T \) is the absolute temperature, \( \eta \) is the viscosity of the fluid, and \( a \) is the radius of the spherical particle.
+
+The observation and understanding of Brownian motion serves not only as a testament to the molecular nature of matter but also allows for the determination of important physical constants, like Boltzmann's constant.
+
+
+\section{Experimental setup}
+\subsection{Apparatus}
+For our apparatus, we had solutions of 1$\mu$m and 2$\mu$m polystyrene spheres dissolved in water.
+We used one drop of the sphere's solution per 100mL of water. Furthermore, we used concave microscope slides
+and square cover slips to trap the solution in a bubble free environemnt.
+
+Our microscope was an Olympus CX 41 Microscope set to 10x magnification. This magnification allowed us to clearly see many spheres, as well as clearly identify between spheres.
+
+\subsection{Data Collection}
+In order to collect data, we first put 3 to 4 drops of solution onto the back of a cover slip. We then upended the cover slip
+over the concavity in the slide to minimize the presence of bubbles. Ideally, there should be no bubbles in the concavity. If there are, there will be flow around the bubble, and the data is unusable.
+Then, we used ThorCAM software, combined with a Thorlabs CS165MU1 microscope camera to record .tif files of the motion.
+We took 12 frames per second, for five seconds, for each trial.
+\subsection{Data Analysis}
+To analyze our data, we added up the squares of the displacements of each particle, and plotted them as a function of time.
+\begin{figure}
+    \begin{center}
+        \includegraphics*[width=3.5in]{trial3_1.png}
+        \caption{A plot of the square of the displacement versus time graph for a 1 micron polystyrene solution. The plot should look linear according to the theory of Brownian Motion.}
+    \end{center}
+\end{figure}
+
+The Boltzmann constant, \( k_B \), can be derived from the slope of the mean square displacement (\( \langle \Delta R^2 \rangle \)) of particles undergoing Brownian motion. The relationship is given by
+Eequation 1.
+By plotting \( \langle \Delta R^2 \rangle \) against time and measuring the slope, \( k_B \) can be derived if the other parameters are known.
+
+
+
+To determine the error in \( k_B \) when we have a slope with associated error, we use the method of propagation of error. Given:
+
+\[ k_B = \frac{kT}{6\pi \eta a} \times \text{slope} \]
+
+where \( k \) is the Boltzmann constant, \( T \) is the absolute temperature, \( \eta \) is the viscosity of the fluid, and \( a \) is the radius of the particle. If \(\Delta \text{slope}\) is the error in the slope, the error in \( k_B \) (\( \Delta k_B \)) is:
+
+\[ \Delta k_B = \frac{kT}{6\pi \eta a} \times \Delta \text{slope} \]
+
+Analyzing our different trials, we were able to obtain the average values for our different polystyrene sizes. We did so by using the temperature of the solution as 300K, and determining the viscosity of the water from this value as well.
+Our average value for $k_B$ was 1.61$\times10^{-23} \pm 1.57\times10^{-25}$
+
+
+\section{Results}
+Our average value for $k_B$ was 1.61$\times10^{-23} \pm 1.57\times10^{-25}$. Because the accepted value for $k_B$ is 1.38$\times10^{-23}$, we were not
+within one standard deviation of the accepted value. One way to improve this experiment would be to have a laser thermometer monitoring the solution at all times, 
+in order to provide a clear and accurate measurement of the temperature and viscosity of the water as a function of time.
+
+\section{Summary and conlcusions}
+
+Our experiment made use of a microscope and camera, as well as 1 and 2 micron polystyrene orbs to determine the value of Boltzmann's constant. While we were not within one 
+standard deviation, we were very close in our determination, as we were ~16\% away from the accepted value.
+\paragraph*{Acknowledgments}
+I would like to thank my lab partner, Sannidhya Desai for his assistance on data
+collection. Furthermore, I'd like to thank Dr. Dan Heinzen,
+Parth Dave, and Konner Feldman for their assistance throughout the measurement and 
+set up processes.
+
+
+
+
+
+\begin{thebibliography}{9}
+
+    \bibitem{brown1828}
+    Robert Brown.
+    \newblock ``A brief account of microscopical observations made in the months of June, July, and August 1827, on the particles contained in the pollen of plants; and on the general existence of active molecules in organic and inorganic bodies."
+    \newblock \emph{Philosophical Magazine}, 4:161–173, 1828.
+    
+    \bibitem{einstein1905}
+    Albert Einstein.
+    \newblock ``\"Uber die von der molekularkinetischen Theorie der W\"arme geforderte Bewegung von in ruhenden Fl\"ussigkeiten suspendierten Teilchen."
+    \newblock \emph{Annalen der Physik}, 322(8):549–560, 1905.
+    
+    \bibitem{perrin1908}
+    Jean Perrin.
+    \newblock ``Mouvement brownien et réalité moléculaire."
+    \newblock \emph{Annales de Chimie et de Physique}, 8th series, vol. 18, pp. 5–114, 1909. [Presented to the Paris Academy of Sciences, 1908.]
+    
+    \bibitem{chandrasekhar1943}
+    Subrahmanyan Chandrasekhar.
+    \newblock ``Stochastic Problems in Physics and Astronomy."
+    \newblock \emph{Reviews of Modern Physics}, 15(1): 1–89, 1943.
+    
+    \bibitem{krapf2020}
+    Diego Krapf, et al.
+    \newblock ``Power spectral density of a single Brownian trajectory: what one can and cannot learn from it."
+    \newblock \emph{New Journal of Physics}, 21(10):103002, 2019.
+    
+    \bibitem{nelson1967}
+    Edward Nelson.
+    \newblock ``Dynamical Theories of Brownian Motion."
+    \newblock \emph{Princeton University Press}, 1967.
+    
+    \bibitem{reif1965}
+    Frederick Reif.
+    \newblock ``Fundamentals of Statistical and Thermal Physics."
+    \newblock \emph{McGraw-Hill}, 1965.
+    
+    \end{thebibliography}
+    
+
+
+\end{document}
+
