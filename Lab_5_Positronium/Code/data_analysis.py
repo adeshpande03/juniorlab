@@ -34,7 +34,7 @@ print(a,b)
 
 # para_params, para_covariance = curve_fit(exp_fit, time_space[820:980], data[820:980])
 para_params, para_covariance = curve_fit(exp_fit, time_space[126:295], data[126:295], p0=(20, 2, 10))
-print(para_params)
+print("para params", para_params)
 
 # ortho_params, ortho_covariance = curve_fit(exp_fit, time_space[1000:], data[1000:])
 # lmbdas = []
@@ -52,8 +52,8 @@ print(para_params)
 # plt.show()
 
 ortho_params, ortho_covariance = curve_fit(exp_fit, time_space[884:-6000], data[884:-6000], p0=(12, .0072, 6))
-print(ortho_params)
-print(np.sqrt(np.diag(ortho_covariance)))
+print(f"ortho_params: {ortho_params}")
+print("ortho cov", np.sqrt(np.diag(ortho_covariance)))
 df = {'Time': time_space, 'Counts': data}
 df = pd.DataFrame(df)
 df['Type'] = 'Excluded'
@@ -80,7 +80,7 @@ plt.xlabel('Time (ns)')
 # plt.ylim(bottom=1)
 # ax.set_xlim(right=600)
 plt.legend()
-plt.show()
+# plt.show()
 
 plt.clf()
 n = 10
@@ -88,8 +88,8 @@ bins, weights = np.asarray(df.iloc[884:-6000, 0]), np.asarray(df.iloc[884:-6000,
 bins = bins.reshape((-1,n))[:,0]
 weights = np.sum(weights.reshape((-1,n)), axis=1)
 ortho_params, ortho_covariance = curve_fit(exp_fit, bins, weights, p0=(12, .0072, 6))
-print(ortho_params)
-print(np.sqrt(np.diag(ortho_covariance)))
+print(f"ortho_params: {ortho_params}")
+print("ortho cov", np.sqrt(np.diag(ortho_covariance)))
 bins, weights = np.asarray(df.iloc[884:, 0]), np.asarray(df.iloc[884:, 1])
 bins = bins.reshape((-1,n))[:,0]
 weights = np.sum(weights.reshape((-1,n)), axis=1)
@@ -101,6 +101,10 @@ plt.xlim(left=time_space[800],right=time_space[-220])
 plt.xlabel('Time (ns)')
 plt.ylabel('Counts')
 plt.legend()
-plt.show()
+# plt.show()
 
+print(list(np.sqrt(np.diag(ortho_covariance))))
+print(list(ortho_params))
+print(math.log(.5)/(-1 * list(ortho_params)[1]))
 
+print(0.006395763216475263/0.0008291609473602737)
