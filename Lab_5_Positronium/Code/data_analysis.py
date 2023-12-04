@@ -80,7 +80,7 @@ plt.xlabel('Time (ns)')
 # plt.ylim(bottom=1)
 # ax.set_xlim(right=600)
 plt.legend()
-# plt.show()
+plt.show()
 
 plt.clf()
 n = 10
@@ -101,7 +101,7 @@ plt.xlim(left=time_space[800],right=time_space[-220])
 plt.xlabel('Time (ns)')
 plt.ylabel('Counts')
 plt.legend()
-# plt.show()
+plt.show()
 
 print(list(np.sqrt(np.diag(ortho_covariance))))
 print(list(ortho_params))
