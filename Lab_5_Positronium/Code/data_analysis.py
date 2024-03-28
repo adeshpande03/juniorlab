@@ -35,14 +35,18 @@ print(a,b)
 # para_params, para_covariance = curve_fit(exp_fit, time_space[820:980], data[820:980])
 para_params, para_covariance = curve_fit(exp_fit, time_space[126:295], data[126:295], p0=(20, 2, 10))
 print("para params", para_params)
+print(np.sqrt(np.diag(para_covariance)))
 
-# ortho_params, ortho_covariance = curve_fit(exp_fit, time_space[1000:], data[1000:])
+# ortho_params, ortho_covariance = curve_fit(exp_fit, time_space[1000:], data[1000:]) 
 # lmbdas = []
-# for i in range(400, 1000):
-#     ortho_params, ortho_covariance = curve_fit(exp_fit, time_space[i:8500], data[i:8500], p0=(12, .0072, 6))
+# for i in range(500, 1000):
+#     ortho_params, ortho_covariance = curve_fit(exp_fit, time_space[i:-6000], data[i:-6000], p0=(12, .0072, 6))
 #     lmbdas.append(ortho_params[1])
-# plt.plot(time_space[400:1000], lmbdas)
+# plt.plot(time_space[500:1000], lmbdas)
+# plt.ylabel('$\lambda$ (ns$^{-1}$)')
+# plt.xlabel('Starting Time (ns)')
 # plt.show()
+# exit()
 
 # lmbdas = []
 # for j in range(3000, 16000, 250):
@@ -51,18 +55,24 @@ print("para params", para_params)
 # plt.plot(time_space[3000:16000:250], lmbdas)
 # plt.show()
 
-ortho_params, ortho_covariance = curve_fit(exp_fit, time_space[884:-6000], data[884:-6000], p0=(12, .0072, 6))
-print(f"ortho_params: {ortho_params}")
-print("ortho cov", np.sqrt(np.diag(ortho_covariance)))
+# ortho_params, ortho_covariance = curve_fit(exp_fit, time_space[884:-6000], data[884:-6000], p0=(12, .0072, 6))
+# print(ortho_params)
+# print(np.sqrt(np.diag(ortho_covariance)))
 df = {'Time': time_space, 'Counts': data}
 df = pd.DataFrame(df)
 df['Type'] = 'Excluded'
-df.iloc[884:-6000, 2] = 'Ortho-positronium'
+df.iloc[3434:-5500, 2] = 'Ortho-positronium'
 df.iloc[126:295, 2] = 'Para-positronium'
-df.iloc[-6000:, 2] = 'Background'
-# abcd = np.average(df.loc[df['Type'] == 'Background', 'Counts'])
-# print(abcd)
-df['Counts'] = df['Counts']
+df.iloc[-1500:, 2] = 'Background'
+n = 10
+weights= np.asarray(df.loc[df['Type'] == 'Background', 'Counts'])
+# bins = bins.reshape((-1,n))[:,0]
+weights = np.sum(weights.reshape((-1,n)), axis=1)
+abcd = np.average(weights)
+efgh = np.std(weights)
+print(abcd, efgh)
+print(time_space[-5500])
+# df['Counts'] = df['Counts']
 
 # fig = plt.figure()
 # fig.set_figwidth(15)
@@ -73,31 +83,56 @@ df['Counts'] = df['Counts']
 # plot = ax.plot(time_space, data, label = "Data", linewidth=1)
 # plot = ax.scatter(time_space, data, label = "Data", s=2)
 palette = sns.color_palette("Set2")
-sns.lmplot(x='Time', y='Counts', data=df, fit_reg=False, hue='Type', palette='Set2', height=12, aspect=15/12, scatter_kws={"s": 5}, legend=False)
+sns.lmplot(x='Time', y='Counts', data=df, fit_reg=False, hue='Type', palette='Set2', height=8, aspect=11/8, scatter_kws={"s": 5}, legend=False)
+plt.rcParams.update({'font.size': 15})
 plt.plot(time_space, exp_fit(time_space, *para_params), label='Para-positronium fit', color=palette[5])
 plt.yscale('log')
 plt.xlabel('Time (ns)')
+plt.ylabel('Counts')
 # plt.ylim(bottom=1)
 # ax.set_xlim(right=600)
 plt.legend()
 plt.show()
 
 plt.clf()
+# n = 10
+# bins, weights = np.asarray(df.iloc[884:-6000, 0]), np.asarray(df.iloc[884:-6000, 1])
+# bins = bins.reshape((-1,n))[:,0]
+# weights = np.sum(weights.reshape((-1,n)), axis=1)
+# ortho_params, ortho_covariance = curve_fit(exp_fit, bins, weights, p0=(12, .0072, 6))
+# print(ortho_params)
+# print(np.sqrt(np.diag(ortho_covariance)))
+# bins, weights = np.asarray(df.iloc[884:, 0]), np.asarray(df.iloc[884:, 1])
+# bins = bins.reshape((-1,n))[:,0]
+# weights = np.sum(weights.reshape((-1,n)), axis=1)
+# # new_hist = np.column_stack((bins,weights))
+# plt.scatter(bins, weights, color=palette[1], s=2, label='Data')
+# # plt.scatter(x=df.loc[df['Type']=='Ortho-positronium', 'Time'], y=df.loc[df['Type']=='Ortho-positronium', 'Counts'])
+# plt.plot(time_space, exp_fit(time_space, *ortho_params), label='Ortho-positronium fit', color=palette[0], linewidth=2)
+# plt.xlim(left=time_space[800],right=time_space[-220])
+# plt.xlabel('Time (ns)')
+# plt.ylabel('Counts')
+# plt.legend()
+# plt.show()
+
 n = 10
-bins, weights = np.asarray(df.iloc[884:-6000, 0]), np.asarray(df.iloc[884:-6000, 1])
+bins, weights = np.asarray(df.iloc[3434:-5500, 0]), np.asarray(df.iloc[3434:-5500, 1])
 bins = bins.reshape((-1,n))[:,0]
 weights = np.sum(weights.reshape((-1,n)), axis=1)
 ortho_params, ortho_covariance = curve_fit(exp_fit, bins, weights, p0=(12, .0072, 6))
+# print(ortho_params)
+# print(np.sqrt(np.diag(ortho_covariance)))
 print(f"ortho_params: {ortho_params}")
 print("ortho cov", np.sqrt(np.diag(ortho_covariance)))
-bins, weights = np.asarray(df.iloc[884:, 0]), np.asarray(df.iloc[884:, 1])
+bins, weights = np.asarray(df.iloc[3434:, 0]), np.asarray(df.iloc[3434:, 1])
+# bins, weights = np.asarray(df.iloc[884:, 0]), np.asarray(df.iloc[884:, 1])
 bins = bins.reshape((-1,n))[:,0]
 weights = np.sum(weights.reshape((-1,n)), axis=1)
 # new_hist = np.column_stack((bins,weights))
 plt.scatter(bins, weights, color=palette[1], s=2, label='Data')
 # plt.scatter(x=df.loc[df['Type']=='Ortho-positronium', 'Time'], y=df.loc[df['Type']=='Ortho-positronium', 'Counts'])
 plt.plot(time_space, exp_fit(time_space, *ortho_params), label='Ortho-positronium fit', color=palette[0], linewidth=2)
-plt.xlim(left=time_space[800],right=time_space[-220])
+plt.xlim(left=time_space[3000],right=time_space[-1])
 plt.xlabel('Time (ns)')
 plt.ylabel('Counts')
 plt.legend()

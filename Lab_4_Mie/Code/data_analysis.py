@@ -63,8 +63,8 @@ def analyze(transverse_data, axial_data):
         shadow=True
         )
     
-    # plt.show()
-    plt.savefig("Lab_4_Mie/plot.png")
+    plt.show()
+    # plt.savefig("Lab_4_Mie/plot.png")
 
 if __name__ == "__main__":
     transverse_data = []
